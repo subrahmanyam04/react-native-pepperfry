@@ -85,10 +85,6 @@ const Tabcard2 = () => {
 
                         </View>
 
-
-
-
-
                         </View>
                     </View>
 
