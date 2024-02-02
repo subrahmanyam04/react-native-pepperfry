@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
         right: 0,
         padding: 2,
         backgroundColor: "white",
-        borderTopWidth: 0.5,
+        borderTopWidth: 1,
         borderTopColor: "#ccc",
     },
     footerText: {

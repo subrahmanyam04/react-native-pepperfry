@@ -34,7 +34,7 @@ const Navbars = () => {
                             headerShown: true,
                             headerLeft: () => (
 
-                                <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+                                <TouchableOpacity onPress={() => navigation.goBack()}>
                                     <View style={{ marginRight: 10, }}>
                                         <Ionicons name="chevron-back-sharp" size={28} color="grey" />
                                     </View>

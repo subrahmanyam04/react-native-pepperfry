@@ -48,7 +48,7 @@ const mapStateToProps = (state) => ({
 
     // sliderdata: state.Sliderreducer.sliderdata,
     // card1data: state.Card1reducer.card1data,
-    token: state.token
+    token: state.Tokenreducer.token
 
     // selectedAboutCard: state.Reducer1.selectedAboutCard
 

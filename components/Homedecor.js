@@ -1,6 +1,7 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native"
 import React, { useState } from 'react';
 import { AntDesign, MaterialIcons } from '@expo/vector-icons'
+import { useNavigation } from "@react-navigation/native";
 
 const styles = StyleSheet.create({
     mainconatiner: {
@@ -67,6 +68,16 @@ const styles = StyleSheet.create({
         color: '#3B3B3B',
         fontSize: 16,
         marginHorizontal: 12
+    },
+    Activeheadertext:{
+        fontWeight: '500',
+        color: 'red',
+        fontSize: 16,
+        marginHorizontal: 12
+    },
+    Activetextcolor:{
+        color: 'red',
+        marginVertical: 6,  
     },
 
     //    nested containers
@@ -276,6 +287,13 @@ const Homedecor = () => {
         }
     ]
 
+    const navigation = useNavigation();
+ 
+// Function to navigate to the specified screen
+const navigateToScreen = (screenName) => {
+    navigation.navigate('Tabcontent', { screen: screenName });
+  };
+
     return (
         <>
             <View style={styles.mainconatiner}>
@@ -321,7 +339,7 @@ const Homedecor = () => {
                                 <View style={styles.innercontainer}>
 
                                     <View>
-                                        <Text style={styles.innercontainerheadtext}>Sofas</Text>
+                                        <Text style={styles.innercontainerheadtext}>Vases</Text>
                                     </View>
 
 
@@ -347,17 +365,12 @@ const Homedecor = () => {
                     <View style={styles.nestedmaincontainer}>
                         <View style={styles.nestedcontainer}>
                             <View>
-                                <Text style={styles.nestedtext}>3 Seater Sofas</Text>
+                                <Text style={styles.Activetextcolor} onPress={() => navigateToScreen('Table Vases')}>Table Vases</Text>
                             </View>
                             <View>
-                                <Text style={styles.nestedtext}>2 Seater Sofas</Text>
+                                <Text style={styles.nestedtext}>Floor Vases</Text>
                             </View>
-                            <View>
-                                <Text style={styles.nestedtext}>1 Seater Sofas</Text>
-                            </View>
-                            <View>
-                                <Text style={styles.nestedtext}>Sofa Sets</Text>
-                            </View>
+                            
                         </View>
                     </View>
                 ) : null}
@@ -426,14 +439,8 @@ const Homedecor = () => {
                                 <View style={styles.innercontainer}>
 
                                     <View>
-                                        <Text style={styles.innercontainerheadtext}>Sofa Cum Beds</Text>
+                                        <Text style={styles.Activeheadertext}onPress={() => navigateToScreen('Figurines')}>Figurines</Text>
                                     </View>
-
-                                    {/* <View style={styles.iconcontainer}>
-                                        {isnestedcontainer1Visible ? (
-                                            <AntDesign name='minus' color={'#5B5B5B'} size={18} />
-                                        ) : <AntDesign name='plus' color={'#5B5B5B'} size={18} />}
-                                    </View> */}
 
                                 </View>
                             </TouchableOpacity>

@@ -1,6 +1,7 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native"
 import React, { useState } from 'react';
 import { AntDesign, MaterialIcons } from '@expo/vector-icons'
+import { useNavigation } from "@react-navigation/native";
 
 const styles = StyleSheet.create({
     mainconatiner: {
@@ -84,6 +85,16 @@ const styles = StyleSheet.create({
         color: 'black',
         marginVertical: 6,
         // fontSize:14,
+    },
+    Activeheadertext:{
+        fontWeight: '500',
+        color: 'red',
+        fontSize: 16,
+        marginHorizontal: 12
+    },
+    Activetextcolor:{
+        color: 'red',
+        marginVertical: 6,  
     }
 
 
@@ -278,6 +289,14 @@ const Mattresses = () => {
           }
       ]
 
+
+      const navigation = useNavigation();
+ 
+// Function to navigate to the specified screen
+const navigateToScreen = (screenName) => {
+    navigation.navigate('Tabcontent', { screen: screenName });
+  };
+
     return (
         <>
             <View style={styles.mainconatiner}>
@@ -323,7 +342,7 @@ const Mattresses = () => {
                                 <View style={styles.innercontainer}>
 
                                     <View>
-                                        <Text style={styles.innercontainerheadtext}>Sofas</Text>
+                                        <Text style={styles.innercontainerheadtext}>King Size Mattresses</Text>
                                     </View>
 
 
@@ -349,16 +368,16 @@ const Mattresses = () => {
                     <View style={styles.nestedmaincontainer}>
                         <View style={styles.nestedcontainer}>
                             <View>
-                                <Text style={styles.nestedtext}>3 Seater Sofas</Text>
+                                <Text style={styles.Activetextcolor} onPress={()=>navigateToScreen('Foam')}>Foam</Text>
                             </View>
                             <View>
-                                <Text style={styles.nestedtext}>2 Seater Sofas</Text>
+                                <Text style={styles.nestedtext}>Spring</Text>
                             </View>
                             <View>
-                                <Text style={styles.nestedtext}>1 Seater Sofas</Text>
+                                <Text style={styles.nestedtext}>Latex</Text>
                             </View>
                             <View>
-                                <Text style={styles.nestedtext}>Sofa Sets</Text>
+                                <Text style={styles.nestedtext}>Coir</Text>
                             </View>
                         </View>
                     </View>
@@ -428,7 +447,7 @@ const Mattresses = () => {
                                 <View style={styles.innercontainer}>
 
                                     <View>
-                                        <Text style={styles.innercontainerheadtext}>Sofa Cum Beds</Text>
+                                        <Text style={styles.Activeheadertext} onPress={() => navigateToScreen('Crib Mattresses')}>Crib Mattresses</Text>
                                     </View>
 
                                     {/* <View style={styles.iconcontainer}>

@@ -3,7 +3,6 @@ import * as actionType from '../Actions/actionType'
 
 const initialState = {
     token: '',
-  
   };
   
   const Tokenreducer = (state = initialState, action) => {

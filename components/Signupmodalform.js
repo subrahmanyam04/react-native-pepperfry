@@ -24,10 +24,10 @@ const Signupmodalform = ({ Settoken, token }) => {
         setEmail(text);
     };
 
-
+console.log('token ok fine',token)
     const handlePasswordChange = (text) => {
         setPassword(text);
-    };
+    };        
 
     useFocusEffect(
         // Hook from react-native navigation runs an effect when the screen comes into focus
@@ -240,7 +240,7 @@ const mapStateToProps = (state) => ({
 
     // sliderdata: state.Sliderreducer.sliderdata,
     // card1data: state.Card1reducer.card1data,
-    token: state.token
+    token: state.Tokenreducer.token
 
     // selectedAboutCard: state.Reducer1.selectedAboutCard
 

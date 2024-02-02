@@ -45,7 +45,7 @@ const Tabcard1 = () => {
                 renderItem={(itemData) => {
                     console.log('itemdata', itemData)
                     return (
-                        <View style={styles.container2}>
+                        <View style={styles.container2} key={itemData.item.id}>
 
                             {
                                 itemData.index === 0 ? (

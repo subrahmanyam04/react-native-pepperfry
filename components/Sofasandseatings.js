@@ -1,6 +1,7 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native"
 import React, { useState } from 'react';
 import { AntDesign, MaterialIcons } from '@expo/vector-icons'
+import { useNavigation } from "@react-navigation/native";
 
 const styles = StyleSheet.create({
     mainconatiner: {
@@ -40,6 +41,12 @@ const styles = StyleSheet.create({
         fontSize: 13,
         fontWeight: '500',
         maxWidth: 315
+    },
+    Activeheadertext:{
+        fontWeight: '500',
+        color: 'red',
+        fontSize: 16,
+        marginHorizontal: 12
     },
 
 
@@ -84,6 +91,10 @@ const styles = StyleSheet.create({
         color: 'black',
         marginVertical: 6,
         // fontSize:14,
+    },
+    Activetextcolor:{
+        color: 'red',
+        marginVertical: 6,  
     }
 
 
@@ -113,168 +124,176 @@ const Sofasandseatings = () => {
 
     const titles = [
         {
-            id:1,
-            tilname:'Futons',
-            onpressind:'',
-            icon:""
+            id: 1,
+            tilname: 'Futons',
+            onpressind: '',
+            icon: ""
         },
         {
-            id:2,
-            tilname:'Chaise Loungers',
-            onpressind:'',
-            icon:""
+            id: 2,
+            tilname: 'Wing Chairs',
+            onpressind: '',
+            icon: ""
         },
         {
-            id:3,
-            tilname:'Bean Bags',
-            onpressind:'',
-            icon:""
+            id: 3,
+            tilname: 'Bean Bags',
+            onpressind: '',
+            icon: ""
         },
         {
-            id:4,
-            tilname:'Recliners',
-            onpressind:'',
-            icon:"plus"
+            id: 4,
+            tilname: 'Recliners',
+            onpressind: '',
+            icon: "plus"
         },
         {
-            id:5,
-            tilname:'Sofa Chairs',
-            onpressind:'',
-            icon:"plus"
+            id: 5,
+            tilname: 'Sofa Chairs',
+            onpressind: '',
+            icon: "plus"
         },
         {
-            id:6,
-            tilname:'Settees & Benches',
-            onpressind:'',
-            icon:"plus"
+            id: 6,
+            tilname: 'Settees & Benches',
+            onpressind: '',
+            icon: "plus"
         },
         {
-            id:7,
-            tilname:'Ottomans',
-            onpressind:'',
-            icon:""
+            id: 7,
+            tilname: 'Ottomans',
+            onpressind: '',
+            icon: ""
         },
         {
-            id:8,
-            tilname:'Chairs',
-            onpressind:'',
-            icon:"plus"
+            id: 8,
+            tilname: 'Chairs',
+            onpressind: '',
+            icon: "plus"
         },
         {
-            id:9,
-            tilname:'Gaming Chairs',
-            onpressind:'',
-            icon:""
+            id: 9,
+            tilname: 'Gaming Chairs',
+            onpressind: '',
+            icon: ""
         },
         {
-            id:10,
-            tilname:'Stool & Pouffes',
-            onpressind:'',
-            icon:"plus"
+            id: 10,
+            tilname: 'Stool & Pouffes',
+            onpressind: '',
+            icon: "plus"
         },
         {
-            id:11,
-            tilname:'Shoe Racks',
-            onpressind:'',
-            icon:"plus"
+            id: 11,
+            tilname: 'Shoe Racks',
+            onpressind: '',
+            icon: "plus"
         },
         {
-            id:12,
-            tilname:'Center Tables',
-            onpressind:'',
-            icon:"plus"
+            id: 12,
+            tilname: 'Center Tables',
+            onpressind: '',
+            icon: "plus"
         },
         {
-            id:13,
-            tilname:'Side Tables',
-            onpressind:'',
-            icon:"plus"
+            id: 13,
+            tilname: 'Side Tables',
+            onpressind: '',
+            icon: "plus"
         },
         {
-            id:14,
-            tilname:'TV & Media Units',
-            onpressind:'',
-            icon:""
+            id: 14,
+            tilname: 'TV & Media Units',
+            onpressind: '',
+            icon: ""
         },
         {
-            id:15,
-            tilname:'Ceabinets & Sideboards',
-            onpressind:'',
-            icon:""
+            id: 15,
+            tilname: 'Ceabinets & Sideboards',
+            onpressind: '',
+            icon: ""
         },
         {
-            id:16,
-            tilname:'Book Shalves',
-            onpressind:'',
-            icon:""
+            id: 16,
+            tilname: 'Book Shalves',
+            onpressind: '',
+            icon: ""
         },
         {
-            id:17,
-            tilname:'Book Cases',
-            onpressind:'',
-            icon:""
+            id: 17,
+            tilname: 'Book Cases',
+            onpressind: '',
+            icon: ""
         },
         {
-            id:18,
-            tilname:'Dining Sets',
-            onpressind:'',
-            icon:"plus"
+            id: 18,
+            tilname: 'Dining Sets',
+            onpressind: '',
+            icon: "plus"
         },
         {
-            id:19,
-            tilname:'Dining Chairs',
-            onpressind:'',
-            icon:""
+            id: 19,
+            tilname: 'Dining Chairs',
+            onpressind: '',
+            icon: ""
         },
         {
-            id:20,
-            tilname:'Dining Tables',
-            onpressind:'',
-            icon:""
+            id: 20,
+            tilname: 'Dining Tables',
+            onpressind: '',
+            icon: ""
         },
         {
-            id:21,
-            tilname:'Crockery Units',
-            onpressind:'',
-            icon:""
+            id: 21,
+            tilname: 'Crockery Units',
+            onpressind: '',
+            icon: ""
         },
         {
-            id:22,
-            tilname:'Bar Furniture',
-            onpressind:'',
-            icon:"plus"
+            id: 22,
+            tilname: 'Bar Furniture',
+            onpressind: '',
+            icon: "plus"
         },
         {
-            id:23,
-            tilname:'Beds',
-            onpressind:'',
-            icon:"plus"
+            id: 23,
+            tilname: 'Beds',
+            onpressind: '',
+            icon: "plus"
         },
         {
-            id:24,
-            tilname:'Besides Tables',
-            onpressind:'',
-            icon:""
+            id: 24,
+            tilname: 'Besides Tables',
+            onpressind: '',
+            icon: ""
         },
         {
-            id:25,
-            tilname:'Linen Trunks',
-            onpressind:'',
-            icon:""
+            id: 25,
+            tilname: 'Linen Trunks',
+            onpressind: '',
+            icon: ""
         },
         {
-            id:26,
-            tilname:'Chest of Drawers',
-            onpressind:'',
-            icon:""
+            id: 26,
+            tilname: 'Chest of Drawers',
+            onpressind: '',
+            icon: ""
         },
         {
-            id:27,
-            tilname:'Dressing Tables',
-            onpressind:'',
-            icon:"plus"
+            id: 27,
+            tilname: 'Dressing Tables',
+            onpressind: '',
+            icon: "plus"
         }
     ]
+
+   
+    const navigation = useNavigation();
+
+    // Function to navigate to the specified screen
+    const navigateToScreen = (screenName) => {
+        navigation.navigate('Tabcontent', { screen: screenName });
+    };
 
 
     return (
@@ -401,7 +420,7 @@ const Sofasandseatings = () => {
                     <View style={styles.nestedmaincontainer}>
                         <View style={styles.nestedcontainer}>
                             <View>
-                                <Text style={styles.nestedtext}>LHS Sectional</Text>
+                                <Text style={styles.Activetextcolor} onPress={() => navigateToScreen('LHS Sectional')}>LHS Sectional</Text>
                             </View>
                             <View>
                                 <Text style={styles.nestedtext}>RHS Sectional</Text>
@@ -427,7 +446,7 @@ const Sofasandseatings = () => {
                                 <View style={styles.innercontainer}>
 
                                     <View>
-                                        <Text style={styles.innercontainerheadtext}>Sofa Cum Beds</Text>
+                                        <Text style={styles.Activeheadertext} onPress={()=> navigateToScreen('Chaise Loungers')}>Chaise Loungers</Text>
                                     </View>
 
                                     {/* <View style={styles.iconcontainer}>

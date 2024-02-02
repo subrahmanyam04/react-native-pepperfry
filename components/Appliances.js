@@ -1,6 +1,7 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native"
 import React, { useState } from 'react';
 import { AntDesign, MaterialIcons } from '@expo/vector-icons'
+import { useNavigation } from "@react-navigation/native";
 
 const styles = StyleSheet.create({
     mainconatiner: {
@@ -40,6 +41,16 @@ const styles = StyleSheet.create({
         fontSize: 13,
         fontWeight: '500',
         maxWidth: 315
+    },
+    Activeheadertext: {
+        fontWeight: '500',
+        color: 'red',
+        fontSize: 16,
+        marginHorizontal: 12
+    },
+    Activetextcolor: {
+        color: 'red',
+        marginVertical: 6,
     },
 
 
@@ -276,6 +287,14 @@ const Appliances = () => {
             icon: "plus"
         }
     ]
+
+    const navigation = useNavigation();
+
+    // Function to navigate to the specified screen
+    const navigateToScreen = (screenName) => {
+        navigation.navigate('Tabcontent', { screen: screenName });
+    };
+
     return (
         <>
             <View style={styles.mainconatiner}>
@@ -321,7 +340,7 @@ const Appliances = () => {
                                 <View style={styles.innercontainer}>
 
                                     <View>
-                                        <Text style={styles.innercontainerheadtext}>Sofas</Text>
+                                        <Text style={styles.innercontainerheadtext}>Breakfast Appliances</Text>
                                     </View>
 
 
@@ -347,16 +366,16 @@ const Appliances = () => {
                     <View style={styles.nestedmaincontainer}>
                         <View style={styles.nestedcontainer}>
                             <View>
-                                <Text style={styles.nestedtext}>3 Seater Sofas</Text>
+                                <Text style={styles.Activetextcolor} onPress={()=>navigateToScreen('Bread and Waffle Makers')}>Bread and Waffle Makers</Text>
                             </View>
                             <View>
-                                <Text style={styles.nestedtext}>2 Seater Sofas</Text>
+                                <Text style={styles.nestedtext}>Sandwich Makers</Text>
                             </View>
                             <View>
-                                <Text style={styles.nestedtext}>1 Seater Sofas</Text>
+                                <Text style={styles.nestedtext}>Pop-up Toasters</Text>
                             </View>
                             <View>
-                                <Text style={styles.nestedtext}>Sofa Sets</Text>
+                                <Text style={styles.nestedtext}>Coffe Makers</Text>
                             </View>
                         </View>
                     </View>
@@ -426,7 +445,7 @@ const Appliances = () => {
                                 <View style={styles.innercontainer}>
 
                                     <View>
-                                        <Text style={styles.innercontainerheadtext}>Sofa Cum Beds</Text>
+                                        <Text style={styles.Activeheadertext} onPress={()=>navigateToScreen('Iron & Steamers')}>Iron & Steamers</Text>
                                     </View>
 
                                     {/* <View style={styles.iconcontainer}>

@@ -271,7 +271,7 @@ const navigateToScreen = (screenName) => {
                         <View style={styles.nestedcontainer}>
                             <View>
                                 <TouchableOpacity activeOpacity={1} >
-                                <Text style={styles.Activetextcolor} onPress={() => navigateToScreen('3SeaterSofas')}>3 Seater Sofas</Text>
+                                <Text style={styles.Activetextcolor} onPress={() => navigateToScreen('3 Seater Sofas')}>3 Seater Sofas</Text>
                                 </TouchableOpacity>
                                 
                             </View>

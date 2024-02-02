@@ -1,6 +1,7 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native"
 import React, { useState } from 'react';
 import { AntDesign, MaterialIcons } from '@expo/vector-icons'
+import { useNavigation } from "@react-navigation/native";
 
 const styles = StyleSheet.create({
     mainconatiner: {
@@ -40,6 +41,15 @@ const styles = StyleSheet.create({
         fontSize: 13,
         fontWeight: '500',
         maxWidth: 315
+    },
+    Activeheadertext: {
+        fontWeight: '500',
+        color: 'red',
+        fontSize: 16,
+        marginHorizontal: 12
+    }, Activetextcolor: {
+        color: 'red',
+        marginVertical: 6,
     },
 
 
@@ -277,6 +287,13 @@ const Kitchenanddining = () => {
         }
     ]
 
+    const navigation = useNavigation();
+
+    // Function to navigate to the specified screen
+    const navigateToScreen = (screenName) => {
+        navigation.navigate('Tabcontent', { screen: screenName });
+    };
+
     return (
         <>
             <View style={styles.mainconatiner}>
@@ -322,7 +339,7 @@ const Kitchenanddining = () => {
                                 <View style={styles.innercontainer}>
 
                                     <View>
-                                        <Text style={styles.innercontainerheadtext}>Sofas</Text>
+                                        <Text style={styles.innercontainerheadtext}>Serveware</Text>
                                     </View>
 
 
@@ -348,16 +365,16 @@ const Kitchenanddining = () => {
                     <View style={styles.nestedmaincontainer}>
                         <View style={styles.nestedcontainer}>
                             <View>
-                                <Text style={styles.nestedtext}>3 Seater Sofas</Text>
+                                <Text style={styles.Activetextcolor} onPress={()=>navigateToScreen('Serving Bowls')}>Serving Bowls</Text>
                             </View>
                             <View>
-                                <Text style={styles.nestedtext}>2 Seater Sofas</Text>
+                                <Text style={styles.nestedtext}>Serving Dishes</Text>
                             </View>
                             <View>
-                                <Text style={styles.nestedtext}>1 Seater Sofas</Text>
+                                <Text style={styles.nestedtext}>Serving Baskets</Text>
                             </View>
                             <View>
-                                <Text style={styles.nestedtext}>Sofa Sets</Text>
+                                <Text style={styles.nestedtext}>Serving Trays</Text>
                             </View>
                         </View>
                     </View>
@@ -427,7 +444,7 @@ const Kitchenanddining = () => {
                                 <View style={styles.innercontainer}>
 
                                     <View>
-                                        <Text style={styles.innercontainerheadtext}>Sofa Cum Beds</Text>
+                                        <Text style={styles.Activeheadertext} onPress={()=> navigateToScreen('Pots and pans')}>Pots and pans</Text>
                                     </View>
 
                                     {/* <View style={styles.iconcontainer}>

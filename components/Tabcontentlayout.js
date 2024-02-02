@@ -4,6 +4,8 @@ import Tabslider from "./Tabslider";
 import Tabsubnavbar from "./Tabsubnavbar";
 import Tabcard1 from "./Tabcard1";
 import Tabcard2 from "./Tabcard2";
+import Tabbanner from "./Tabbanner";
+import Tabdynamiccard3 from "./Tabdynamiccard3";
 
 const Tabcontentlayout = () => {
     return (
@@ -14,8 +16,10 @@ const Tabcontentlayout = () => {
             <Tabslider/>
             <Tabcard1/>
             <Tabcard2/>
+            <Tabbanner/>
+            <Tabdynamiccard3/>
         </ScrollView>
-        <View style={styles.bottomborder}/>
+
         </>
     )
 }
@@ -25,11 +29,8 @@ export default Tabcontentlayout;
 const styles = StyleSheet.create({
     topborder:{
         borderTopColor:'lightgrey',
-        borderWidth:1
+        borderTopWidth:1
     },
-    bottomborder:{
-        borderBottomColor:'lightgrey',
-        borderWidth:1
-    },
+    
 
 })

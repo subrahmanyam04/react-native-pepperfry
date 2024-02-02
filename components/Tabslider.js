@@ -1,7 +1,15 @@
-import React from "react";
+import { useRoute } from "@react-navigation/native";
+import React, { useEffect } from "react";
 import { FlatList, Image, StyleSheet, Text, View } from "react-native";
+import { GetsliderData } from "../Redux/Api/Getsliderdata";
+import { setSliderdata } from "../Redux/Actions/Slideraction";
+import { connect } from "react-redux";
 
-const Tabslider = () => {
+
+const Tabslider = ({
+    sliderdata,
+    setSliderdata
+}) => {
 
     const slidingdata = [
         {
@@ -54,12 +62,36 @@ const Tabslider = () => {
         },
     ]
 
+    useEffect(() => {
+        getData();
+
+    }, []);
+
+    const getData = async () => {
+        try {
+            const students = await GetsliderData();
+            console.log('data has been received', students)
+            setSliderdata(students);
+            console.log('iam student data', students)
+        } catch (error) {
+            console.error('An error occurred:', error);
+
+        }
+    };
+
+    const route = useRoute();
+    
+    const routename = route.params.screen
+
+    let jaggu = sliderdata.filter(i => i.status == routename)
+    console.log('i am jaggu', jaggu)
+
     return (
 
 
         <View styles={styles.container} >
             <FlatList
-                data={slidingdata}
+                data={jaggu}
                 horizontal={true}
                 showsHorizontalScrollIndicator={false}
                 renderItem={(itemData) => {
@@ -70,7 +102,9 @@ const Tabslider = () => {
 
                             <View style={{ marginHorizontal: 2 }}>
                                 <View>
-                                    <Image source={{ uri: itemData.item.url }} style={{ height: 60, width: '100%', resizeMode: 'contain' }} />
+                                    <Image source={{ uri: itemData.item.imgurl }} style={{ 
+                                        
+                                        height: 60, width: '100%', resizeMode: 'contain' }} />
                                 </View>
 
                                 <View>
@@ -109,7 +143,21 @@ const Tabslider = () => {
     )
 }
 
-export default Tabslider;
+const mapStateToProps = (state) => ({
+
+    // sliderdata: state.Sliderreducer.sliderdata,
+    sliderdata: state.Sliderreducer.sliderdata,
+    // selectedAboutCard: state.Reducer1.selectedAboutCard
+
+});
+
+const mapDispatchToProps = {
+    setSliderdata
+    // setSelectedAboutCard,
+
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Tabslider);
 
 const styles = StyleSheet.create({
     container: {

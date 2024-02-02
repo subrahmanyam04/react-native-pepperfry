@@ -1,6 +1,7 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native"
 import React, { useState } from 'react';
 import { AntDesign, MaterialIcons } from '@expo/vector-icons'
+import { useNavigation } from "@react-navigation/native";
 
 const styles = StyleSheet.create({
     mainconatiner: {
@@ -40,6 +41,15 @@ const styles = StyleSheet.create({
         fontSize: 13,
         fontWeight: '500',
         maxWidth: 315
+    },
+    Activeheadertext:{
+        fontWeight: '500',
+        color: 'red',
+        fontSize: 16,
+        marginHorizontal: 12
+    }, Activetextcolor:{
+        color: 'red',
+        marginVertical: 6,  
     },
 
 
@@ -276,6 +286,13 @@ const Lampsandlighting = () => {
         }
     ]
 
+const navigation = useNavigation();
+ 
+// Function to navigate to the specified screen
+const navigateToScreen = (screenName) => {
+    navigation.navigate('Tabcontent', { screen: screenName });
+  };
+
     return (
         <>
             <View style={styles.mainconatiner}>
@@ -321,7 +338,7 @@ const Lampsandlighting = () => {
                                 <View style={styles.innercontainer}>
 
                                     <View>
-                                        <Text style={styles.innercontainerheadtext}>Sofas</Text>
+                                        <Text style={styles.innercontainerheadtext}>Lamps</Text>
                                     </View>
 
 
@@ -347,16 +364,16 @@ const Lampsandlighting = () => {
                     <View style={styles.nestedmaincontainer}>
                         <View style={styles.nestedcontainer}>
                             <View>
-                                <Text style={styles.nestedtext}>3 Seater Sofas</Text>
+                                <Text style={styles.Activetextcolor} onPress={() => navigateToScreen('Floor Lamps')}>Floor Lamps</Text>
                             </View>
                             <View>
-                                <Text style={styles.nestedtext}>2 Seater Sofas</Text>
+                                <Text style={styles.nestedtext}>Shelf Floor Lamps</Text>
                             </View>
                             <View>
-                                <Text style={styles.nestedtext}>1 Seater Sofas</Text>
+                                <Text style={styles.nestedtext}>Table Lamps</Text>
                             </View>
                             <View>
-                                <Text style={styles.nestedtext}>Sofa Sets</Text>
+                                <Text style={styles.nestedtext}>Night Lamps</Text>
                             </View>
                         </View>
                     </View>
@@ -426,7 +443,7 @@ const Lampsandlighting = () => {
                                 <View style={styles.innercontainer}>
 
                                     <View>
-                                        <Text style={styles.innercontainerheadtext}>Sofa Cum Beds</Text>
+                                        <Text style={styles.Activeheadertext} onPress={() => navigateToScreen('Bell')}>Bell</Text>
                                     </View>
 
                                     {/* <View style={styles.iconcontainer}>

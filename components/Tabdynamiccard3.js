@@ -2,7 +2,7 @@ import React from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 import { Ionicons, Entypo } from '@expo/vector-icons'
 import Tabcard23infor from "./Tabcard23infor";
-const Tabcard2 = () => {
+const Tabdynamiccard3 = () => {
 
     const card2data = [
         {
@@ -30,12 +30,12 @@ const Tabcard2 = () => {
 
                 <View style={styles.innercontainer}>
 
-                    {card2data.map((card2) => (
+                    {card2data.map((card3) => (
 
 
-                        <View style={styles.rowcontainer} key={card2.id}>
+                        <View style={styles.rowcontainer} key={card3.id}>
 
-                            <View style={styles.rowinnercontainer} >
+                            <View style={styles.rowinnercontainer}>
                                 {/* image here is */}
                                 <View>
                                     <Image
@@ -71,12 +71,12 @@ const Tabcard2 = () => {
     )
 }
 
-export default Tabcard2;
+export default Tabdynamiccard3;
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        marginBottom: 4
+        marginBottom: 50
     },
     innercontainer: {
         flex: 1,
