@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FlatList, Image, StyleSheet, Text, View } from "react-native";
 import { Ionicons } from '@expo/vector-icons'
+import { setCard1data } from "../Redux/Actions/Card1action";
+import { Getcard1Data } from "../Redux/Api/Getcard1data";
+import { connect } from "react-redux";
+import { useRoute } from "@react-navigation/native";
 
 
-const Tabcard1 = () => {
+const Tabcard1 = ({
+    card1data,
+    setCard1data
+}) => {
     const sliderdata = [
         {
             id: 1,
@@ -36,11 +43,37 @@ const Tabcard1 = () => {
 
         }
     ]
+
+
+
+    useEffect(() => {
+        getData();
+
+    }, []);
+
+    const getData = async () => {
+        try {
+            const students = await Getcard1Data();
+            console.log('data has been received', students)
+            setCard1data(students);
+            console.log('iam student data', students)
+        } catch (error) {
+            console.error('An error occurred:', error);
+
+        }
+    };
+
+   
+    const route = useRoute();
+    const routename = route.params.screen
+
+    let jaggu = card1data.filter(i => i.status === routename)
+    console.log('i am jaggu', jaggu)
     return (
         <View style={styles.container}>
 
             <FlatList
-                data={sliderdata}
+                data={jaggu}
 
                 renderItem={(itemData) => {
                     console.log('itemdata', itemData)
@@ -50,7 +83,7 @@ const Tabcard1 = () => {
                             {
                                 itemData.index === 0 ? (
                                     <View style={{marginRight:6}}>
-                                        <Image source={{ uri: itemData.item.imageuri }} style={{
+                                        <Image source={{ uri: itemData.item.imgurl }} style={{
                                             width: 140,
                                             height: 216,
                                             resizeMode:'contain'
@@ -59,7 +92,7 @@ const Tabcard1 = () => {
                                 ) : (
                                     <>
                                         <View>
-                                            <Image source={{ uri: itemData.item.imageuri }}
+                                            <Image source={{ uri: itemData.item.imgurl }}
                                                 style={styles.image}
                                             />
                                             <View style={styles.iconContainer}>
@@ -96,7 +129,21 @@ const Tabcard1 = () => {
     )
 }
 
-export default Tabcard1;
+const mapStateToProps = (state) => ({
+
+    // sliderdata: state.Sliderreducer.sliderdata,
+    card1data: state.Card1reducer.card1data,
+    // selectedAboutCard: state.Reducer1.selectedAboutCard
+    
+});
+
+const mapDispatchToProps = {
+    setCard1data
+    // setSelectedAboutCard,
+
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Tabcard1);
 
 const styles = StyleSheet.create({
     container: {

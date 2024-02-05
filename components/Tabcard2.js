@@ -1,10 +1,19 @@
-import React from "react";
-import { Image, StyleSheet, Text, View } from "react-native";
+import React, { useEffect } from "react";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Ionicons, Entypo } from '@expo/vector-icons'
 import Tabcard23infor from "./Tabcard23infor";
-const Tabcard2 = () => {
+import { connect } from "react-redux";
+import { Getcard2Data } from "../Redux/Api/Getcard2data";
+import { setCard2data } from "../Redux/Actions/Card2action";
+import { useNavigation, useRoute } from "@react-navigation/native";
+const Tabcard2 = ({
+    card2data,
+    setCard2data
+}) => {
 
-    const card2data = [
+   
+
+    const carddata = [
         {
             id: 1,
             imgurl: 'https://ii1.pepperfry.com/media/catalog/product/d/a/494x544/daroo-3-seater-sofa-in-camel-beige-by-febonic-daroo-3-seater-sofa-in-camel-beige-by-febonic-o8dhfm.jpg'
@@ -24,13 +33,40 @@ const Tabcard2 = () => {
 
     ]
 
+    useEffect(() => {
+        getData();
+
+    }, []);
+
+
+    const getData = async () => {
+        try {
+            const students = await Getcard2Data();
+            console.log('data has been received', students)
+            setCard2data(students);
+            console.log('iam student data', students)
+        } catch (error) {
+            console.error('An error occurred:', error);
+
+        }
+    };
+
+    const route = useRoute();
+   const routename = route.params.screen
+console.log('rpute name in acrd2',routename)
+    let jaggu = card2data.filter(i => i.status === routename)
+    console.log('i am jaggu', jaggu)
+
+const navigation= useNavigation();
+
     return (
         <>
+        <TouchableOpacity activeOpacity={1} >
             <View style={styles.container}>
 
                 <View style={styles.innercontainer}>
 
-                    {card2data.map((card2) => (
+                    {jaggu.map((card2) => (
 
 
                         <View style={styles.rowcontainer} key={card2.id}>
@@ -39,7 +75,7 @@ const Tabcard2 = () => {
                                 {/* image here is */}
                                 <View>
                                     <Image
-                                        source={{ uri: 'https://ii1.pepperfry.com/media/catalog/product/d/a/494x544/daroo-3-seater-sofa-in-camel-beige-by-febonic-daroo-3-seater-sofa-in-camel-beige-by-febonic-o8dhfm.jpg' }}
+                                        source={{ uri: card2.imgurl }}
                                         style={styles.image}
                                     />
                                     <View style={styles.iconcontainer}>
@@ -67,11 +103,26 @@ const Tabcard2 = () => {
                 </View>
 
             </View>
+            </TouchableOpacity>
         </>
     )
 }
 
-export default Tabcard2;
+const mapStateToProps = (state) => ({
+
+    // sliderdata: state.Sliderreducer.sliderdata,
+    card2data: state.Card2reducer.card2data,
+    // selectedAboutCard: state.Reducer1.selectedAboutCard
+    
+});
+
+const mapDispatchToProps = {
+    setCard2data
+    // setSelectedAboutCard,
+
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Tabcard2);
 
 const styles = StyleSheet.create({
     container: {
@@ -111,8 +162,8 @@ const styles = StyleSheet.create({
         borderRadius: 30
     },
     image: {
-        width: 'auto',
-        height: 210,
+        width: '100%',
+        height: 212,
         resizeMode: 'contain'
     }
 })

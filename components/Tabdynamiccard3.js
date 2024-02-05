@@ -1,8 +1,18 @@
-import React from "react";
-import { Image, StyleSheet, Text, View } from "react-native";
+import React, { useEffect } from "react";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Ionicons, Entypo } from '@expo/vector-icons'
 import Tabcard23infor from "./Tabcard23infor";
-const Tabdynamiccard3 = () => {
+import { Getcard3Data } from "../Redux/Api/Getcard3data";
+import { setCard3data } from "../Redux/Actions/Card3action";
+import { useNavigation, useRoute } from "@react-navigation/native";
+import { connect } from "react-redux";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+
+const Tabdynamiccard3 = ({
+    card3data,
+    setCard3data,
+}) => {
 
     const card2data = [
         {
@@ -24,40 +34,82 @@ const Tabdynamiccard3 = () => {
 
     ]
 
+    useEffect(() => {
+        getData();
+
+    }, []);
+
+
+    const getData = async () => {
+        try {
+            const students = await Getcard3Data();
+            console.log('data has been received', students)
+            setCard3data(students);
+            console.log('iam student data', students)
+        } catch (error) {
+            console.error('An error occurred:', error);
+
+        }
+    };
+
+
+    const route = useRoute();
+    const routename = route.params.screen
+    console.log('rpute name in acrd2', routename)
+    let jaggu = card3data.filter(i => i.status === routename)
+    console.log('i am jaggu', jaggu)
+
+    const navigation = useNavigation();
+
+
+    const handleCardClick = async (aboutcard) => {
+        console.log("aboutcard data is here", aboutcard);
+        const aboutcarddataString = JSON.stringify(aboutcard);
+        try {
+            await AsyncStorage.setItem('aboutcarddata', aboutcarddataString);
+            console.log('Data stored successfully');
+            navigation.navigate('Products',{screens:aboutcard[0].innerstatus,secondname:aboutcard[0].status})
+        } catch (error) {
+            console.error('Error storing data:', error);
+        }
+    };
+
     return (
         <>
             <View style={styles.container}>
 
                 <View style={styles.innercontainer}>
 
-                    {card2data.map((card3) => (
+                    {jaggu.map((card3) => (
 
 
                         <View style={styles.rowcontainer} key={card3.id}>
-
-                            <View style={styles.rowinnercontainer}>
-                                {/* image here is */}
-                                <View>
-                                    <Image
-                                        source={{ uri: 'https://ii1.pepperfry.com/media/catalog/product/d/a/494x544/daroo-3-seater-sofa-in-camel-beige-by-febonic-daroo-3-seater-sofa-in-camel-beige-by-febonic-o8dhfm.jpg' }}
-                                        style={styles.image}
-                                    />
-                                    <View style={styles.iconcontainer}>
-                                        <View style={styles.iconbackground}>
-                                            <Ionicons name="heart-outline" size={20} color="#696969" />
+                            <TouchableOpacity activeOpacity={1} onPress={() => handleCardClick(card3.aboutcard)}>
+                                <View style={styles.rowinnercontainer}>
+                                    {/* image here is */}
+                                    <View>
+                                        <Image
+                                            source={{ uri: card3.imgurl }}
+                                            style={styles.image}
+                                        />
+                                        <View style={styles.iconcontainer}>
+                                            <View style={styles.iconbackground}>
+                                                <Ionicons name="heart-outline" size={20} color="#696969" />
+                                            </View>
                                         </View>
                                     </View>
+
+                                    {/* details of that image */}
+
+                                    {/* entire Information of the card is in this below file */}
+
+
+                                    <Tabcard23infor />
+
+                                    {/* entire Information of the card is in this above file*/}
+
                                 </View>
-
-                                {/* details of that image */}
-
-                                {/* entire Information of the card is in this below file */}
-
-                                <Tabcard23infor />
-
-                                {/* entire Information of the card is in this above file*/}
-
-                            </View>
+                            </TouchableOpacity>
                         </View>
 
 
@@ -71,7 +123,22 @@ const Tabdynamiccard3 = () => {
     )
 }
 
-export default Tabdynamiccard3;
+const mapStateToProps = (state) => ({
+
+
+    card3data: state.Card3reducer.card3data,
+
+
+});
+
+const mapDispatchToProps = {
+    setCard3data,
+    // setSelectedAboutCard
+
+
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Tabdynamiccard3);
 
 const styles = StyleSheet.create({
     container: {
@@ -112,7 +179,7 @@ const styles = StyleSheet.create({
     },
     image: {
         width: 'auto',
-        height: 210,
+        height: 212,
         resizeMode: 'contain'
     }
 })
