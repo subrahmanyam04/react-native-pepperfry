@@ -83,7 +83,7 @@ export default Productscostdetails
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        marginBottom: 100,
+        marginBottom: 20,
         marginTop: 40
     },
     innercontainer: {

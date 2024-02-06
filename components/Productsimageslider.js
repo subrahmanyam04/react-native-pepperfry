@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FlatList, Image, StyleSheet, Text, View } from "react-native";
 import { windowWidth } from "../Util/Dimensions";
 import { Octicons, Ionicons, Feather, MaterialCommunityIcons } from '@expo/vector-icons'
 import { useRoute } from "@react-navigation/native";
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 const Productsimageslider = () => {
     const [activeindex, setactiveindex] = useState(0)
 
@@ -30,9 +30,41 @@ const Productsimageslider = () => {
 
     const route = useRoute();
 
+    const [aboutcard, Setaboutcard] = useState([''])
+    const [receivedimges,setimges]=useState('')
+    console.log("i am the received images are",receivedimges)
+    useEffect(() => {
+        retrieveData();
+
+    }, [])
+    // Retrieve the data
+    const retrieveData = async () => {
+        try {
+            const storedDataString = await AsyncStorage.getItem('aboutcarddata');
+            if (storedDataString !== null) {
+                // Parse the JSON string back to an object
+                const storedData = JSON.parse(storedDataString);
+                console.log('Data retrieved successfully:', storedData);
+                Setaboutcard(storedData)
+                setimges(storedData[0].imgesurl)
+                // await AsyncStorage.removeItem('aboutcarddata');
+                console.log('Local storage cleared');
+
+            } else {
+                console.log('No data found');
+            }
+        } catch (error) {
+            console.error('Error retrieving data:', error);
+        }
+    };
+
+    // console.log('aboutcard in imgsludeer',aboutcard)
+    //   const img = aboutcard[0].imgesurl
+    //   console.log("recevied successfully",img)
+
     return (
         <View style={styles.container}>
-            
+
             <View style={{ flex: 1, flexDirection: 'column', marginVertical: 8, marginHorizontal: 8 }}>
                 <Text style={{ color: '#343534', fontWeight: '600', fontSize: 16 }}>
                     Elegant {route.params.screens} in Grey Colour.
@@ -49,7 +81,7 @@ const Productsimageslider = () => {
 
             </View>
             <FlatList
-                data={imageuels}
+                data={receivedimges}
                 horizontal={true}
                 pagingEnabled={true}
                 showsHorizontalScrollIndicator={false}
@@ -57,13 +89,13 @@ const Productsimageslider = () => {
                     return (
                         <View style={styles.subconatiner} key={itemData.item.id}>
                             <View>
-                                <Image source={{ uri: itemData.item.url }} style={styles.image} />
+                                <Image source={{ uri: itemData.item.imgurl }} style={styles.image} />
                             </View>
                         </View>
                     )
                 }}
                 onScroll={handlescroll}
-                keyExtractor={(item) => item.id}
+                keyExtractor={(item) => item.imgurl}
             />
 
             {/* sharecontainer */}
@@ -94,8 +126,8 @@ const Productsimageslider = () => {
 
             {/* dotted container goes here */}
             <View style={styles.dottericoncontainer}>
-                {imageuels.map((data, index) => (
-                    <View style={{ marginHorizontal: 4 }} key={data.id}>
+                {receivedimges && receivedimges.map((data, index) => (
+                    <View style={{ marginHorizontal: 4 }} key={data.imgurl}>
                         {activeindex === index ? (<Octicons name='dot-fill' color={'#ff4500'} size={16} />) : (<Octicons name='dot' color={'grey'} size={16} />)}
                     </View>
                 ))}
