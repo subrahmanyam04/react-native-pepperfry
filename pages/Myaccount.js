@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Signupmodalform from "../components/Signupmodalform";
 // import { Settoken } from "../Redux/Actions/Tokenaction";
 import { connect } from "react-redux";
 import Myaccountlayout from "../components/Myaccountlayout";
+import { useNavigation } from "@react-navigation/native";
 
-const Myaccount = ({token}) => {
+const Myaccount = ({token, route}) => {
+
+    const navigation = useNavigation();
+
+    
  
     console.log('token in my account', token)
  

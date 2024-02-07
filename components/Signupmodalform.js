@@ -15,7 +15,8 @@ const Signupmodalform = ({ Settoken, token }) => {
 
     const [modalVisible, setModalVisible] = useState(false);
     const [login, setLogin] = useState(false);
-
+    const [error, seterror] = useState(false);
+    const [perror,setperror] = useState('')
     const navigation = useNavigation();
 
     const [email, setEmail] = useState('');
@@ -24,10 +25,10 @@ const Signupmodalform = ({ Settoken, token }) => {
         setEmail(text);
     };
 
-console.log('token ok fine',token)
+    console.log('token ok fine', token)
     const handlePasswordChange = (text) => {
         setPassword(text);
-    };        
+    };
 
     useFocusEffect(
         // Hook from react-native navigation runs an effect when the screen comes into focus
@@ -48,26 +49,28 @@ console.log('token ok fine',token)
         setModalVisible(false);
         setEmail('')
         setPassword('')
+        seterror('')
+        setperror('')
         navigation.navigate('Home')
     };
 
     const handlesignup = async (email, password) => {
 
         try {
-             if (!email || !password) {
+            if (!email || !password) {
                 Alert.alert('Please enter both email and password');
                 return;
             }
             await firebase.auth().createUserWithEmailAndPassword(email, password)
             // Get the current user information
             const currentUser = firebase.auth().currentUser;
-            console.log('i am current user in sidhddn',currentUser)
+            console.log('i am current user in sidhddn', currentUser)
             const idToken = await currentUser.getIdToken();
             const userEmail = currentUser.email;
             const userName = currentUser.displayName;
             const userProfile = currentUser.photoURL
             // Store the user token and email in AsyncStorage
-            const authData = JSON.stringify({ idToken, userEmail , userName, userProfile  });
+            const authData = JSON.stringify({ idToken, userEmail, userName, userProfile });
             await AsyncStorage.setItem('userAuthData', authData);
             retrieveUserAuthData()
             setEmail('')
@@ -101,19 +104,19 @@ console.log('token ok fine',token)
         try {
             // Check if email and password are provided
             if (!email || !password) {
-                Alert.alert('Please enter both email and password');
+               Alert.alert('please enter both email amd password')
                 return;
             }
             await firebase.auth().signInWithEmailAndPassword(email, password)
             // Get the current user information
             const currentUser = firebase.auth().currentUser;
-            console.log('i am current user in sidhddn',currentUser)
+            console.log('i am current user in sidhddn', currentUser)
             const idToken = await currentUser.getIdToken();
             const userEmail = currentUser.email;
             const userName = currentUser.displayName
             const userProfile = currentUser.photoURL
             // Store the user token and email in AsyncStorage
-            const authData = JSON.stringify({ idToken, userEmail,userName, userProfile });
+            const authData = JSON.stringify({ idToken, userEmail, userName, userProfile });
             await AsyncStorage.setItem('userAuthData', authData);
             retrieveUserAuthData()
             setEmail('')
@@ -122,6 +125,7 @@ console.log('token ok fine',token)
             console.log('ok')
         } catch (error) {
             Alert.alert('you have entered wrong email or password')
+            // seterror(true)
             console.log('its error')
         }
     }
@@ -152,7 +156,7 @@ console.log('token ok fine',token)
                             <Text style={styles.modalText}>Sign Up Or Log In</Text>
                         </View>
 
-                        <View>
+                        <View style={{marginBottom:10}}>
                             <TextInput
                                 style={styles.input}
 
@@ -163,7 +167,9 @@ console.log('token ok fine',token)
                                 cursorColor='#ff4500'  // Set the cursor color to red
                             // keyboardType="numeric"
                             />
-
+                            {error ? <Text>please enter the valid mail id</Text> : ""}
+                        </View>
+                        <View style={{marginBottom:10}}>
                             <TextInput
                                 style={styles.input}
                                 onChangeText={handlePasswordChange}
@@ -173,6 +179,7 @@ console.log('token ok fine',token)
                                 cursorColor='#ff4500'  // Set the cursor color to red
                             // keyboardType='visible-password'
                             />
+                            {perror ? <Text>please enter the valid password</Text> : ""}
                         </View>
 
                         <View>
@@ -311,7 +318,7 @@ const styles = StyleSheet.create({
         borderColor: 'grey',
         fontSize: 18,
         padding: 12,
-        marginBottom: 15
+        // marginBottom: 15
     },
     onfocusinput: {
         borderColor: 'black',

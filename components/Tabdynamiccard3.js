@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
         alignItems: 'flex-end'
     },
     iconbackground: {
-        backgroundColor: "rgba(255, 255, 255, 0.4)",
+        backgroundColor: "rgba(255, 255, 255, 0.7)",
         top: 14,
         right: 6,
         padding: 5,

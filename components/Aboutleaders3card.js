@@ -77,6 +77,7 @@ const Aboutleaders3card = () => {
                             <AntDesign name='twitter' color={'grey'} size={18} />
                         </View>
                         {/* image 1*/}
+                        <View>
                         <TouchableOpacity activeOpacity={1} onPress={handlePressed}>
                             <View style={styles.imagecontainer}>
                             <Image source={{ uri: 'https://www.pepperfry.ltd/wp-content/uploads/2023/04/Anand.jpg' }} style={styles.image} />
@@ -90,12 +91,14 @@ const Aboutleaders3card = () => {
                                 </>
                             ) : null}
                         </TouchableOpacity>
+                        </View>
                         {/* image description 1*/}
                         <View>
                             <Text style={styles.imagetextdescripheading}>Anand Batra</Text>
                             <Text style={styles.imagetextdescripsubheading}>Chief Financial Officer</Text>
                         </View>
                     </View>
+                    
 
                     {/* 2 */}
 
@@ -106,7 +109,7 @@ const Aboutleaders3card = () => {
                             <AntDesign name='twitter' color={'grey'} size={18} />
                         </View>
                         {/* image 2*/}
-                     
+                     <View>
                         <TouchableOpacity activeOpacity={1} onPress={handlePressed1}>
                         <View style={styles.imagecontainer}>
                             <Image source={{ uri: 'https://www.pepperfry.ltd/wp-content/uploads/2023/04/Sanjay.jpg' }} style={styles.image} /></View>
@@ -120,10 +123,11 @@ const Aboutleaders3card = () => {
                             ) : null}
                         </TouchableOpacity>
                         {/* image description 2*/}
-                        <View>
-                            <Text style={styles.imagetextdescripheading}>Sanjay Netrabile</Text>
+                       </View>
+                       <View>
+                       <Text style={styles.imagetextdescripheading}>Sanjay Netrabile</Text>
                             <Text style={styles.imagetextdescripsubheading}>Chief Technology Officer</Text>
-                        </View>
+                       </View>
                     </View>
 
                 </View>
@@ -180,36 +184,41 @@ const styles = StyleSheet.create({
     },
 
     innercontainer: {
-        flex: 1,
+        // flex: 1,
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginHorizontal: 22
+        marginHorizontal: 22,
+        marginTop:28
+
     },
     innercontainer2: {
-        flex: 1,
+        // flex: 1,
         flexDirection: 'column',
         alignItems: 'center',
         marginHorizontal: 22,
-        marginTop: 28
+        marginTop: 60
     },
     rowcontainer2: {
         width: '46%',
         flexDirection: 'column',
         // borderColor: 'black',
         // borderWidth: 2
+        // height: 250,
     },
     rowcontainer: {
         width: '46%',
         flexDirection: 'column',
+        height: 240,
         // borderColor: 'black',
         // borderWidth: 2
     },
 
     image: {
       
-        height: 155,
+        height: 164,
         width: '100%',
         resizeMode: 'contain',
+        
         // marginTop: 4
     },
 
@@ -280,9 +289,10 @@ const styles = StyleSheet.create({
     imagetextdescripsubheading:{
         color:'#121212',
         fontSize:17,
-        fontWeight:'400',
+        fontWeight:'500',
         textAlign:'center',
         lineHeight:22
      
-    }
+    },
+   
 })

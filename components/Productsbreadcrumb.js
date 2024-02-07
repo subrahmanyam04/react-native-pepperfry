@@ -6,7 +6,7 @@ import { useRoute } from "@react-navigation/native";
 const Productsbreadcrumb = () => {
 
     const route = useRoute();
-
+   
     const named = [
         {
             id: 1,
@@ -26,7 +26,7 @@ const Productsbreadcrumb = () => {
         },
         {
             id: 5,
-            routename: 'Chesterfield 3 Seater Sofas'
+            routename: "'Chesterfield 3 Seater Sofas'"
         },
     ]
 

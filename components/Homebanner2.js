@@ -24,7 +24,8 @@ const styles = StyleSheet.create({
         flex:1,
         justifyContent: 'center',
         alignItems: 'center',
-       
+        marginHorizontal:4,
+     
       },
     //   imgcontainer:{
     //     flex:0.3,
@@ -33,7 +34,7 @@ const styles = StyleSheet.create({
     //   },
     image: {
         width: '100%',
-        height: 93, // Set a fixed height or adjust as needed
+        height: 96, // Set a fixed height or adjust as needed
         resizeMode:'contain',
       },
 

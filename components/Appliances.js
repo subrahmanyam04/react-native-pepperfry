@@ -448,11 +448,7 @@ const Appliances = () => {
                                         <Text style={styles.Activeheadertext} onPress={()=>navigateToScreen('Iron & Steamers')}>Iron & Steamers</Text>
                                     </View>
 
-                                    {/* <View style={styles.iconcontainer}>
-                                        {isnestedcontainer1Visible ? (
-                                            <AntDesign name='minus' color={'#5B5B5B'} size={18} />
-                                        ) : <AntDesign name='plus' color={'#5B5B5B'} size={18} />}
-                                    </View> */}
+                                 
 
                                 </View>
                             </TouchableOpacity>
