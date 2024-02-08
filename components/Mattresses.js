@@ -16,8 +16,9 @@ const styles = StyleSheet.create({
     },
     subcontainer: {
         flexDirection: 'row',
-        marginTop: 15,
+        marginTop: 12,
         // marginHorizontal: 10,
+       
         marginBottom: 12
     },
     iconcontainer: {
@@ -37,11 +38,11 @@ const styles = StyleSheet.create({
     },
 
     subtext: {
-        color: 'grey',
-        fontSize: 13,
-        fontWeight: '500',
-        maxWidth: 315
-    },
+            color: 'grey',
+            fontSize: 13,
+            fontWeight: '500',
+            maxWidth: '92%'
+        },
 
 
 

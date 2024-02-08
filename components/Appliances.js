@@ -16,9 +16,9 @@ const styles = StyleSheet.create({
     },
     subcontainer: {
         flexDirection: 'row',
-        marginTop: 15,
+        marginTop: 8,
         // marginHorizontal: 10,
-        marginBottom: 12
+        marginBottom: 8
     },
     iconcontainer: {
         marginHorizontal: 2
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
         color: 'grey',
         fontSize: 13,
         fontWeight: '500',
-        maxWidth: 315
+        maxWidth: "92%"
     },
     Activeheadertext: {
         fontWeight: '500',

@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     },
     subcontainer: {
         flexDirection: 'row',
-        marginTop: 15,
+        marginTop: 12,
         // marginHorizontal: 10,
         marginBottom: 12
     },
@@ -131,7 +131,8 @@ const Modular = () => {
 
 
 
-           
+           {/* <View style={{ borderBottomColor: 'lightgrey',
+        borderBottomWidth: 1}}/> */}
 
             </View>
 

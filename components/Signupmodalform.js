@@ -10,6 +10,9 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { firebase } from '../firebase'
 import { connect } from 'react-redux';
 import { Settoken } from "../Redux/Actions/Tokenaction";
+import "expo-dev-client"
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import auth from '@react-native-firebase/auth';
 
 const Signupmodalform = ({ Settoken, token }) => {
 
@@ -29,6 +32,10 @@ const Signupmodalform = ({ Settoken, token }) => {
     const handlePasswordChange = (text) => {
         setPassword(text);
     };
+
+    GoogleSignin.configure({
+        webClientId: '518917201034-32cov3h39la2nqmtf12o90vvs0vv75ji.apps.googleusercontent.com',
+    });
 
     useFocusEffect(
         // Hook from react-native navigation runs an effect when the screen comes into focus
@@ -130,6 +137,42 @@ const Signupmodalform = ({ Settoken, token }) => {
         }
     }
 
+    async function onGoogleButtonPress() {
+        // Check if your device supports Google Play
+        // await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
+        // Get the users ID token
+        const { idToken } = await GoogleSignin.signIn();
+        // console.log('this google sign in token', idToken)
+        const currentUser = auth().currentUser;
+        const idToken2 = await currentUser.getIdToken();
+        const userEmail = auth().currentUser.email;
+        const userName = auth().currentUser.displayName
+        const userProfile = auth().currentUser.photoURL
+        console.log('this google sign in token2', idToken2)
+        const authData = JSON.stringify({ idToken2, userEmail, userName, userProfile });
+        await AsyncStorage.setItem('userAuthData', authData);
+
+        // Retrieve the stored token and update the state
+        // const storedToken = await AsyncStorage.getItem('userAuthData'); 
+        // Settoken(storedToken);
+        retrieveUserAuthData()
+        setEmail('')
+        setPassword('')
+        setModalVisible(false)
+        console.log('ok')
+        // Create a Google credential with the token
+        const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+
+        // Sign-in the user with the credential
+        const user = auth().signInWithCredential(googleCredential);
+        user.then((users) => {
+            console.log(users);
+        })
+            .catch((error) => {
+                console.log(error)
+            })
+    }
+
     return (
         <Modal
             animationType="slide"
@@ -196,16 +239,16 @@ const Signupmodalform = ({ Settoken, token }) => {
 
 
                         <View style={styles.termstextcontainer}>
-                            <Text >By continuing, you agree to our Terms & Conditions</Text>
-                            <Text style={styles.termstext}>Or</Text>
-                            <Text >continue with</Text>
+                            <Text style={{textAlign:'center'}}>By continuing, you agree to our Terms & Conditions</Text>
+                            <Text style={[styles.termstext,{textAlign:'center'}]}>Or</Text>
+                            <Text style={{textAlign:'center'}}>continue with</Text>
                         </View>
 
 
                         {/* google sign in button */}
 
                         <View>
-                            <TouchableOpacity activeOpacity={1}>
+                            <TouchableOpacity activeOpacity={1} onPress={() => onGoogleButtonPress().then(() => console.log('Signed in with Google!'))}>
                                 <View style={styles.googlecontainer}>
 
                                     <Image source={{ uri: 'https://w7.pngwing.com/pngs/989/129/png-transparent-google-logo-google-search-meng-meng-company-text-logo-thumbnail.png' }} style={{ width: 40, height: 35, resizeMode: 'contain' }} />
@@ -337,6 +380,7 @@ const styles = StyleSheet.create({
     },
     termstextcontainer: {
         flexDirection: 'column',
+        justifyContent:'center',
         alignItems: 'center',
         marginTop: 30,
         marginBottom: 20
