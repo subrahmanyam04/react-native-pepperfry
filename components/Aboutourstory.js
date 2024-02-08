@@ -48,8 +48,8 @@ const styles = StyleSheet.create({
     headtext: {
         textAlign: 'center',
         color: '#000000',
-        fontSize: 35,
-        fontWeight: 'bold'
+        fontSize: 26,
+        fontWeight: '900'
     },
     img: {
         height: 600,

@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
             color: 'grey',
             fontSize: 13,
             fontWeight: '500',
-            maxWidth: '92%'
+            // maxWidth: '92%'
         },
 
 
@@ -313,7 +313,7 @@ const navigateToScreen = (screenName) => {
                                 <Image source={{ uri: 'https://ii1.pepperfry.com/media/wysiwyg/banners/mattressesappliances_13042023.jpg' }} style={styles.image} />
                             </View>
 
-                            <View>
+                            <View style={{width:"76%"}}>
                                 <Text style={styles.headingtext}>Mattresses</Text>
                                 <Text style={styles.subtext} numberOfLines={1} ellipsizeMode="tail">Sofas,Sectional Sofas,Sofa Cum Beds, Futons,Chaise Loungers</Text>
                             </View>

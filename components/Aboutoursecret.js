@@ -151,8 +151,8 @@ const styles = StyleSheet.create({
     headtext: {
         textAlign: 'center',
         color: '#000000',
-        fontSize: 35,
-        fontWeight: 'bold'
+        fontSize: 26,
+        fontWeight: '900'
     },
     imgcontainer: {
         //    marginTop:24
@@ -180,10 +180,10 @@ const styles = StyleSheet.create({
     },
     imgparagraph: {
         color: '#000000',
-        fontSize: 20,
+        fontSize: 18,
         fontWeight: '400',
         textAlign: 'center',
-        paddingHorizontal: 4,
+        paddingHorizontal: 10,
         lineHeight: 26
     },
     imgreadmorelink: {

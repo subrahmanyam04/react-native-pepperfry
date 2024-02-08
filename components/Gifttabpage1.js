@@ -3,6 +3,7 @@ import React from 'react';
 import { View, Text, ScrollView, Button, TouchableOpacity, StyleSheet } from 'react-native';
 import Gifttab1layout from './Gifttab1layout';
 import { useNavigation } from '@react-navigation/native';
+import { windowWidth } from '../Util/Dimensions';
 
 
 const Gifttabpage1 = () => {
@@ -53,12 +54,14 @@ const styles = StyleSheet.create({
     borderColor: '#ff4500',
     marginTop:8,
     padding: 10,
-    maxWidth:220,
+    // maxWidth:"100%",
     
   },
   buttonText: {
     color: '#ff4500',
     textAlign: 'center',
+    // flex:1,
+    marginBottom:6
     
   },
   headingtext:{

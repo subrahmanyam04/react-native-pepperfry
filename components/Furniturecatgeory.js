@@ -214,7 +214,7 @@ const navigateToScreen = (screenName) => {
                                 <Image source={{ uri: 'https://ii1.pepperfry.com/media/wysiwyg/banners/Furniture_LogoIcon_2x_0307.jpg' }} style={styles.image} />
                             </View>
 
-                            <View >
+                            <View style={{width:"76%"}}>
                                 <Text style={styles.headingtext}>Furniture</Text>
                                 <Text style={styles.subtext} numberOfLines={1} ellipsizeMode="tail">Sofas,Sectional Sofas,Sofa Cum Beds, Futons,Chaise Loungers</Text>
                             </View>
@@ -406,7 +406,8 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         // marginTop: 10, 
-        backgroundColor: 'white'
+        backgroundColor: 'white',
+        // marginHorizontal:4
 
     },
     subcontainer: {
@@ -436,7 +437,7 @@ const styles = StyleSheet.create({
         color: 'grey',
         fontSize: 13,
         fontWeight: '500',
-        maxWidth: '92%'
+        // maxWidth: '92%'
     },
 
 

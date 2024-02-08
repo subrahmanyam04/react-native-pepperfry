@@ -26,7 +26,7 @@ const Productsbreadcrumb = () => {
         },
         {
             id: 5,
-            routename: "'Chesterfield 3 Seater Sofas'"
+            routename: "Chesterfield 3 Seater Sofas"
         },
     ]
 
@@ -39,7 +39,7 @@ const Productsbreadcrumb = () => {
 
                             <Text style={{ color: 'black', fontSize: 14, fontWeight: '500' }}>{data.routename}</Text>
 
-                            {index === named.length - 1 ? '' : <Entypo name='chevron-small-right' color={'grey'} size={18} />
+                            {data.id === 5 ? "" : <Entypo name='chevron-small-right' color={'grey'} size={18} />
                             }
                         </View>
 

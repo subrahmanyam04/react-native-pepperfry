@@ -201,16 +201,13 @@ const styles = StyleSheet.create({
     rowcontainer2: {
         width: '46%',
         flexDirection: 'column',
-        // borderColor: 'black',
-        // borderWidth: 2
-        // height: 250,
+  
     },
     rowcontainer: {
         width: '46%',
         flexDirection: 'column',
-        height: 240,
-        // borderColor: 'black',
-        // borderWidth: 2
+        height: 230,
+   
     },
 
     image: {
@@ -274,7 +271,7 @@ const styles = StyleSheet.create({
     },
    
     socialcontainer: {
-        flex: 1,
+        // flex: 1,
         flexDirection: 'row',
         justifyContent: 'flex-end',
         marginBottom:5

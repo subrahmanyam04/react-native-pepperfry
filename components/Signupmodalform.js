@@ -12,7 +12,7 @@ import { connect } from 'react-redux';
 import { Settoken } from "../Redux/Actions/Tokenaction";
 import "expo-dev-client"
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
-import auth from '@react-native-firebase/auth';
+// import auth from '@react-native-firebase/auth';
 
 const Signupmodalform = ({ Settoken, token }) => {
 

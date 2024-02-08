@@ -101,8 +101,8 @@ const styles = StyleSheet.create({
     headtext:{
         textAlign: 'center',
         color: '#000000',
-        fontSize: 35,
-        fontWeight: 'bold' 
+        fontSize: 26,
+        fontWeight: '900' 
     },
     imgcontainer:{
     //    marginTop:24
@@ -114,14 +114,15 @@ const styles = StyleSheet.create({
     },
     imgtitle:{
         color:'#000000',
-        fontSize:18,
+        fontSize:16,
         fontWeight:'500',
         textAlign:'center',
         marginTop:2
     },
     imgdescription:{
         color:'#000000',
-        fontSize:14,
+        fontSize:12,
+        fontWeight:'400',
         textAlign:'center',
         marginVertical:4
     }

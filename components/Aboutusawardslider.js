@@ -137,8 +137,8 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 50,
-        marginBottom: 30,
+        marginTop: 80,
+        marginBottom: 50,
         width: windowWidth - 44
     },
     navigationButtons: {
@@ -167,8 +167,8 @@ const styles = StyleSheet.create({
     },
     infortext: {
         color: 'black',
-        fontSize: 19,
-        fontWeight: '400',
+        fontSize: 18,
+        fontWeight: '300',
         textAlign: 'center',
         lineHeight: 28,
         paddingHorizontal: 28,
@@ -176,8 +176,9 @@ const styles = StyleSheet.create({
     },
     headingtext: {
         color: 'black',
-        fontWeight: 'bold',
-        fontSize: 32,
+        fontWeight: '900',
+        fontSize: 28,
+        lineHeight:42,
         textAlign: 'center'
     },
     headingtextcontainer: {

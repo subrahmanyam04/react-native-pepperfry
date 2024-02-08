@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
         ...StyleSheet.absoluteFillObject,
         backgroundColor: 'rgba(0, 0, 0, 0.8)',
         width: '100%',
-        height: 'auto',
+        height: "auto",
         // top: 2,
         // marginRight: 2,
         // marginLeft: 2
@@ -153,15 +153,15 @@ const styles = StyleSheet.create({
     headtext: {
         textAlign: 'center',
         color: '#000000',
-        fontSize: 32,
-        fontWeight: 'bold'
+        fontSize: 26,
+        fontWeight: '900'
     },
     imagecontainer:{
           marginTop:2,
           marginBottom:5
     },
     image:{
-         height:362,
+         height:346,
          width:'100%',
          resizeMode:'contain'
     },

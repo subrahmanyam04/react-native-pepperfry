@@ -136,8 +136,8 @@ const styles = StyleSheet.create({
         width: '50%'
     },
     headingrowcontainerinnertext: {
-        fontSize: 16,
-        fontWeight: '400',
+        fontSize: 14,
+        fontWeight: '300',
         color: '#2A292B',
         textAlign: 'center'
     },
@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
     policycontainer: {
         flex: 1,
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: "space-around",
         marginBottom: 8,
         marginTop: 16
     },

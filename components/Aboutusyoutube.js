@@ -131,8 +131,8 @@ const styles = StyleSheet.create({
       borderRadius:15
   },
   headingtext:{
-    fontSize:32,
-    fontWeight:'bold',
+    fontSize:26,
+    fontWeight:'900',
     color:'black',
     textAlign:'center',
     marginBottom:14

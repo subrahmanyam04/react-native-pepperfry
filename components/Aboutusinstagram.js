@@ -201,8 +201,8 @@ const styles = StyleSheet.create({
     },
     headingtext:{
         color:'black',
-        fontSize:32,
-        fontWeight:'bold',
+        fontSize:26,
+        fontWeight:'900',
         textAlign:'center'
     },
     headingtextcontainer:{

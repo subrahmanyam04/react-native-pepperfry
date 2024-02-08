@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
         color: 'grey',
         fontSize: 13,
         fontWeight: '500',
-        maxWidth: "92%"
+        // maxWidth: "92%"
     },
     Activeheadertext: {
         fontWeight: '500',
@@ -309,7 +309,7 @@ const Kitchenanddining = () => {
                                 <Image source={{ uri: 'https://ii1.pepperfry.com/media/wysiwyg/banners/kitchen_and_diningappliances_13042023.jpg' }} style={styles.image} />
                             </View>
 
-                            <View>
+                            <View style={{width:"76%"}}>
                                 <Text style={styles.headingtext}>Kitchen & Dining</Text>
                                 <Text style={styles.subtext} numberOfLines={1} ellipsizeMode="tail">Sofas,Sectional Sofas,Sofa Cum Beds, Futons,Chaise Loungers</Text>
                             </View>

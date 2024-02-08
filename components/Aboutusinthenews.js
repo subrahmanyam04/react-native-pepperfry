@@ -35,7 +35,7 @@ const Aboutusinthenews = () => {
             <View style={styles.innercontainer}>
 
                 <View style={{marginTop:15,marginBottom:20}}>
-                      <Text style={{color:'black',fontSize:32,fontWeight:'bold',textAlign:'center'}}>
+                      <Text style={{color:'black',fontSize:26,fontWeight:'900',textAlign:'center'}}>
                         IN THE NEWS
                       </Text>
                 </View>
@@ -63,7 +63,7 @@ const Aboutusinthenews = () => {
                             </View>
 
                             <View style={{ marginTop: 8 }}>
-                                <Text style={{ fontSize: 18, color: 'black', fontWeight: '400', lineHeight: 26, paddingHorizontal: 2 }}>
+                                <Text style={{ fontSize: 18, color: 'black', fontWeight: '300', lineHeight: 24, paddingHorizontal: 2 }}>
                                     {user.information}
                                 </Text>
                             </View>

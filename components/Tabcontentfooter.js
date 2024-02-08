@@ -15,7 +15,7 @@ const Tabcontentfooter = () => {
                             <Ionicons name='home-outline' color={'#ff4500'} size={24} />
                         </View>
                         <View>
-                            <Text style={styles.rowcontainerhometext}>Home</Text>
+                            <Text style={styles.rowcontainerhometext} numberOfLines={1} ellipsizeMode="tail">Home</Text>
                         </View>
                     </View>
                 </TouchableOpacity>
@@ -26,7 +26,7 @@ const Tabcontentfooter = () => {
                             <Ionicons name='person-outline' size={24} color={'black'} />
                         </View>
                         <View>
-                            <Text style={styles.rowcontainertext}>Myaccount</Text>
+                            <Text style={styles.rowcontainertext} numberOfLines={1} ellipsizeMode="tail">Myaccount</Text>
                         </View>
                     </View>
                 </TouchableOpacity>
@@ -37,7 +37,7 @@ const Tabcontentfooter = () => {
                             <Ionicons name='gift-outline' size={24} color={'black'} />
                         </View>
                         <View>
-                            <Text style={styles.rowcontainertext}>Gift Card</Text>
+                            <Text style={styles.rowcontainertext} numberOfLines={1} ellipsizeMode="tail">Gift Card</Text>
                         </View>
                     </View>
                 </TouchableOpacity>
@@ -48,7 +48,7 @@ const Tabcontentfooter = () => {
                             <Ionicons name='location-outline' size={24} color={'black'} />
                         </View>
                         <View>
-                            <Text style={styles.rowcontainertext}>Store</Text>
+                            <Text style={styles.rowcontainertext} numberOfLines={1} ellipsizeMode="tail">Store</Text>
                         </View>
                     </View>
                 </TouchableOpacity>
@@ -59,7 +59,7 @@ const Tabcontentfooter = () => {
                             <Ionicons name='information-circle-outline' size={24} color={'black'} />
                         </View>
                         <View>
-                            <Text style={styles.rowcontainertext}>Categories</Text>
+                            <Text style={styles.rowcontainertext} numberOfLines={1} ellipsizeMode="tail">Categories</Text>
                         </View>
                     </View>
                 </TouchableOpacity>
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
         borderTopColor: "#ccc",
     },
     footerText: {
-        fontSize: 16,
+        fontSize: 12,
         color: "#333", // Set your desired text color
     },
     conatiner: {

@@ -150,20 +150,20 @@ const styles = StyleSheet.create({
     headingtext: {
         textAlign: 'center',
         color: '#000000',
-        fontSize: 35,
-        fontWeight: 'bold'
+        fontSize: 26,
+        fontWeight: '900'
     },
     headtextcontainer: {
         marginTop: 15,
         marginBottom: 15
     },
     informationtext: {
-        fontSize: 17,
-        // padding:1,
+        fontSize: 14,
+        paddingHorizontal:4,
         textAlign: 'center',
         color: '#000000',
-        lineHeight: 24
-
+        lineHeight: 24,
+        fontWeight:'400'
     }
 
 })
