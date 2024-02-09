@@ -7,7 +7,7 @@
     ],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/dribbbbleicon.png",
+    "icon": "./assets/1397.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/dribbbbleicon.png",

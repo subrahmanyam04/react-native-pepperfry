@@ -11,6 +11,7 @@ import { firebase } from '../firebase'
 import { connect } from 'react-redux';
 import { Settoken } from "../Redux/Actions/Tokenaction";
 import "expo-dev-client"
+import { Entypo } from '@expo/vector-icons'
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 // import auth from '@react-native-firebase/auth';
 
@@ -19,11 +20,18 @@ const Signupmodalform = ({ Settoken, token }) => {
     const [modalVisible, setModalVisible] = useState(false);
     const [login, setLogin] = useState(false);
     const [error, seterror] = useState(false);
-    const [perror,setperror] = useState('')
+    const [perror, setperror] = useState('');
+    
+
     const navigation = useNavigation();
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
+
+    const toggleShowPassword = () => {
+        setShowPassword(!showPassword);
+    };
     const handleEmailChange = (text) => {
         setEmail(text);
     };
@@ -111,7 +119,7 @@ const Signupmodalform = ({ Settoken, token }) => {
         try {
             // Check if email and password are provided
             if (!email || !password) {
-               Alert.alert('please enter both email amd password')
+                Alert.alert('please enter both email amd password')
                 return;
             }
             await firebase.auth().signInWithEmailAndPassword(email, password)
@@ -199,7 +207,7 @@ const Signupmodalform = ({ Settoken, token }) => {
                             <Text style={styles.modalText}>Sign Up Or Log In</Text>
                         </View>
 
-                        <View style={{marginBottom:10}}>
+                        <View style={{ marginBottom: 10 }}>
                             <TextInput
                                 style={styles.input}
 
@@ -212,17 +220,25 @@ const Signupmodalform = ({ Settoken, token }) => {
                             />
                             {error ? <Text>please enter the valid mail id</Text> : ""}
                         </View>
-                        <View style={{marginBottom:10}}>
+                        <View style={{ marginBottom: 10 }}>
                             <TextInput
                                 style={styles.input}
                                 onChangeText={handlePasswordChange}
                                 value={password}
                                 placeholder="Enter Password"
                                 caretHidden={false} // Show the cursor
-                                cursorColor='#ff4500'  // Set the cursor color to red
-                            // keyboardType='visible-password'
+                                cursorColor='#ff4500'
+                                secureTextEntry={!showPassword} //password text is here
                             />
-                            {perror ? <Text>please enter the valid password</Text> : ""}
+                            <View style={{ position: 'absolute', top: 0, bottom: 10, left: 0, right: 10, justifyContent: 'flex-end', alignItems: 'flex-end' }}>
+                                {showPassword ? (
+                                    <Entypo name='eye' color={'black'} size={18} onPress={toggleShowPassword} />
+                                ) : (
+                                    <Entypo name='eye-with-line' color={'black'} size={18} onPress={toggleShowPassword} />
+                                )}
+
+
+                            </View>
                         </View>
 
                         <View>
@@ -239,9 +255,9 @@ const Signupmodalform = ({ Settoken, token }) => {
 
 
                         <View style={styles.termstextcontainer}>
-                            <Text style={{textAlign:'center'}}>By continuing, you agree to our Terms & Conditions</Text>
-                            <Text style={[styles.termstext,{textAlign:'center'}]}>Or</Text>
-                            <Text style={{textAlign:'center'}}>continue with</Text>
+                            <Text style={{ textAlign: 'center' }}>By continuing, you agree to our Terms & Conditions</Text>
+                            <Text style={[styles.termstext, { textAlign: 'center' }]}>Or</Text>
+                            <Text style={{ textAlign: 'center' }}>continue with</Text>
                         </View>
 
 
@@ -272,17 +288,9 @@ const Signupmodalform = ({ Settoken, token }) => {
                         </View>
 
                     </View>
-
-
-
-
                 </View>
             </View>
         </Modal>
-
-
-
-
     )
 }
 
@@ -380,7 +388,7 @@ const styles = StyleSheet.create({
     },
     termstextcontainer: {
         flexDirection: 'column',
-        justifyContent:'center',
+        justifyContent: 'center',
         alignItems: 'center',
         marginTop: 30,
         marginBottom: 20

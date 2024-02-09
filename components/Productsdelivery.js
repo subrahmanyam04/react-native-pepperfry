@@ -31,7 +31,7 @@ const Productsdelivery = () => {
                         </View>
 
                         <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between', marginTop: 6 }}>
-                            <View style={{ flex: 0.9 }}>
+                            <View style={{ width:"72%" }}>
                                 <TextInput
                                     style={styles.input}
                                     placeholder="5600001, Bengaluru"
@@ -48,7 +48,7 @@ const Productsdelivery = () => {
                             </View>
 
                             <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                                <Text ><MaterialCommunityIcons name='target' color={'#ff4500'} size={20} /> <Text style={{ color: '#ff4500', fontWeight: "900", fontSize: 18 }}> Locate</Text></Text>
+                                <Text ><MaterialCommunityIcons name='target' color={'#ff4500'} size={20} /> <Text style={{ color: '#ff4500', fontWeight: "900", fontSize: 18 }}>Locate</Text></Text>
                             </View>
 
 
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
         borderColor: 'grey',
         borderRadius: 4,
         fontWeight: '500',
-        fontSize: 18,
+        fontSize: 16,
         padding: 10,
     },
     iconBackground: {
