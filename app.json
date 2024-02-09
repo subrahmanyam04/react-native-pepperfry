@@ -23,7 +23,7 @@
     "android": {
       "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/1397.png",
         "backgroundColor": "#ffffff"
       },
       "package": "com.subbu_123.PepperfryApp"
