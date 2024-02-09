@@ -44,7 +44,7 @@ const Aboutusinthenews = () => {
 
                     <View style={styles.subcontainer} key={user.id}>
                         <View style={{ marginBottom: 2 }}>
-                            <Image source={{ uri: user.url }} style={{ width: 'auto', height: 228, resizeMode: 'contain' }} />
+                            <Image source={{ uri: user.url }} style={{ width: '100%', height: 228, resizeMode: 'contain' }} />
                         </View>
 
 

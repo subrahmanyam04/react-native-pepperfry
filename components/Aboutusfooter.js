@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Linking, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Entypo } from '@expo/vector-icons';
 
 const Aboutusfooter = () => {
@@ -78,7 +78,7 @@ const Aboutusfooter = () => {
                     <View style={styles.insideinnercontainer}>
                         {socialicons.map((media) => (
 
-                            <TouchableOpacity key={media.id} style={styles.iconspaces} onPress={() => presshandler(media.url)}>
+                            <TouchableOpacity key={media.id} style={styles.iconspaces} onPress={() => Linking.openURL(media.url)}>
                                 <Entypo name={media.iconname} size={36} color={media.color} />
                             </TouchableOpacity>
 

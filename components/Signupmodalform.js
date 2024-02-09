@@ -13,7 +13,7 @@ import { Settoken } from "../Redux/Actions/Tokenaction";
 import "expo-dev-client"
 import { Entypo } from '@expo/vector-icons'
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
-// import auth from '@react-native-firebase/auth';
+import auth from '@react-native-firebase/auth';
 
 const Signupmodalform = ({ Settoken, token }) => {
 
@@ -21,7 +21,7 @@ const Signupmodalform = ({ Settoken, token }) => {
     const [login, setLogin] = useState(false);
     const [error, seterror] = useState(false);
     const [perror, setperror] = useState('');
-    
+
 
     const navigation = useNavigation();
 
@@ -264,7 +264,8 @@ const Signupmodalform = ({ Settoken, token }) => {
                         {/* google sign in button */}
 
                         <View>
-                            <TouchableOpacity activeOpacity={1} onPress={() => onGoogleButtonPress().then(() => console.log('Signed in with Google!'))}>
+                            <TouchableOpacity activeOpacity={1}
+                                onPress={() => onGoogleButtonPress().then(() => console.log('Signed in with Google!'))}>
                                 <View style={styles.googlecontainer}>
 
                                     <Image source={{ uri: 'https://w7.pngwing.com/pngs/989/129/png-transparent-google-logo-google-search-meng-meng-company-text-logo-thumbnail.png' }} style={{ width: 40, height: 35, resizeMode: 'contain' }} />
