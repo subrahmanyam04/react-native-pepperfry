@@ -150,14 +150,18 @@ const Signupmodalform = ({ Settoken, token }) => {
         // await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
         // Get the users ID token
         const { idToken } = await GoogleSignin.signIn();
-        // console.log('this google sign in token', idToken)
+        console.log('this google sign in token', idToken)
         const currentUser = auth().currentUser;
-        const idToken2 = await currentUser.getIdToken();
+        console.log("iam currentuser",currentUser)
+        // // const idToken2 = await currentUser.getIdToken;
         const userEmail = auth().currentUser.email;
+        console.log('iam useremail',userEmail)
         const userName = auth().currentUser.displayName
+        console.log('iam useremail',userName)
         const userProfile = auth().currentUser.photoURL
-        console.log('this google sign in token2', idToken2)
-        const authData = JSON.stringify({ idToken2, userEmail, userName, userProfile });
+        console.log('iam useremail',userProfile)
+        // console.log('this google sign in token2', idToken2)
+        const authData = JSON.stringify({ idToken, userEmail, userName, userProfile });
         await AsyncStorage.setItem('userAuthData', authData);
 
         // Retrieve the stored token and update the state
@@ -174,7 +178,7 @@ const Signupmodalform = ({ Settoken, token }) => {
         // Sign-in the user with the credential
         const user = auth().signInWithCredential(googleCredential);
         user.then((users) => {
-            console.log(users);
+            console.log("i am the user",users);
         })
             .catch((error) => {
                 console.log(error)
