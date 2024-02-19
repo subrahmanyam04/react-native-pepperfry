@@ -31,7 +31,7 @@ const Productsdelivery = () => {
                         </View>
 
                         <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between', marginTop: 6 }}>
-                            <View style={{ width:"72%" }}>
+                            <View style={{ width: "72%" }}>
                                 <TextInput
                                     style={styles.input}
                                     placeholder="5600001, Bengaluru"
@@ -54,11 +54,11 @@ const Productsdelivery = () => {
 
                         </View>
                         <View>
-                            <Text style={[styles.fontsstyle,{marginTop:10}]}>Delivery by Tue, 20 Feb 2024 ₹1199</Text>
+                            <Text style={[styles.fontsstyle, { marginTop: 10 }]}>Delivery by Tue, 20 Feb 2024 ₹1199</Text>
                         </View>
 
                         <View>
-                            <Text style={[styles.fontsstyle,{marginTop:2}]}>Assembly by Offered By Pepperfry ₹1139 <Text><AntDesign name='infocirlceo' color={'grey'} size={14} /></Text> </Text>
+                            <Text style={[styles.fontsstyle, { marginTop: 2 }]}>Assembly by Offered By Pepperfry ₹1139 <Text><AntDesign name='infocirlceo' color={'grey'} size={14} /></Text> </Text>
                         </View>
 
                     </View>) : ('')}
@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
         color: '#404240',
         fontSize: 15,
         fontWeight: '500',
-        
+
     }
 
 })

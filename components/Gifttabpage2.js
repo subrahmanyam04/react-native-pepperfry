@@ -9,7 +9,7 @@ const Gifttabpage2 = () => {
   
   return (
    
-   <ScrollView>
+   <ScrollView bounces={false} alwaysBounceVertical={false}>
     <Gifttab2layout/>
    </ScrollView>
   

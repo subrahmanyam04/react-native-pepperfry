@@ -6,37 +6,37 @@ import { Ionicons } from '@expo/vector-icons'
 const Homeslider2 = () => {
     const sliderdata = [
         {
-            id:1,
+            id: 1,
             imageuri: "https://ii3.pepperfry.com/media/catalog/product/s/u/494x544/suveharts-wall-hangings---door-hanging--decorative-items-for-home---home-decor-items---for-office----6tft4r.jpg",
             title: "",
 
         },
         {
-            id:2,
+            id: 2,
             imageuri: "https://ii2.pepperfry.com/media/catalog/product/y/e/494x544/yellow-traditional-120-tc-100--cotton-queen-bedsheet-with-2-pillow-covers-yellow-traditional-120-tc--x6mn2l.jpg",
             title: "",
 
         },
         {
-            id:3,
+            id: 3,
             imageuri: "https://ii2.pepperfry.com/media/catalog/product/e/c/494x544/eco-star--900ml-leak-proof--sipper-eco-star--900ml-leak-proof--sipper-mq7wpk.jpg",
             title: "",
 
         },
         {
-            id:4,
+            id: 4,
             imageuri: "https://ii1.pepperfry.com/media/catalog/product/s/e/494x544/set-of-5-geometric-pattern-jute-16x16-cushion-covers-by-romee-set-of-5-geometric-pattern-jute-16x16--g0bqsf.jpg",
             title: "",
 
         },
         {
-            id:5,
+            id: 5,
             imageuri: "https://ii1.pepperfry.com/media/catalog/product/m/u/494x544/multicolour-5-mtrs--50-led--usb-operated-led-string-light-multicolour-5-mtrs--50-led--usb-operated-l-kbgukq.jpg",
             title: "",
 
         },
         {
-            id:6,
+            id: 6,
             imageuri: "https://ii1.pepperfry.com/media/catalog/product/s/n/494x544/snake-natural-plant-in-white-self-watering-plastic-pot-by-ugaoo-snake-natural-plant-in-white-self-wa-yyl6lf.jpg",
             title: "",
 
@@ -44,10 +44,11 @@ const Homeslider2 = () => {
     ]
     return (
         <View style={styles.container}>
-            
+
             <FlatList
                 data={sliderdata}
-
+                bounces={false}
+                alwaysBounceHorizontal={false}
                 renderItem={(itemData) => {
                     console.log('itemdata', itemData)
                     return (
@@ -106,11 +107,11 @@ const styles = StyleSheet.create({
     },
 
     text1: {
-        marginTop:6,
-        marginHorizontal:2,
-        maxWidth:150,
-        fontSize:12,
-        color:'black'
+        marginTop: 6,
+        marginHorizontal: 2,
+        maxWidth: 150,
+        fontSize: 12,
+        color: 'black'
     },
     pricetext: {
         margin: 2
@@ -123,28 +124,28 @@ const styles = StyleSheet.create({
         left: 0,
         alignItems: 'flex-end',
         justifyContent: 'flex-end',
-       
+
     },
     iconBackground: {
-        top:13,
-        right:5,
+        top: 13,
+        right: 5,
         backgroundColor: 'rgba(255, 255, 255, 0.8)', // Adjust opacity as needed
         padding: 5,
         borderRadius: 25,
         // borderWidth: 1,
         // borderColor: 'black',
     },
-    firstprice:{
-         fontWeight:'bold'
+    firstprice: {
+        fontWeight: 'bold'
     },
-    secondprice:{
+    secondprice: {
         textDecorationLine: 'line-through',
-        color:'black' 
+        color: 'black'
     },
-    thirdprice:{
-        fontWeight:'bold',
-        fontSize:14.5 ,
-        color:'green'
+    thirdprice: {
+        fontWeight: 'bold',
+        fontSize: 14.5,
+        color: 'green'
     }
 
 

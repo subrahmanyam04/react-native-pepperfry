@@ -43,6 +43,8 @@ const Homedbcardslider = () => {
         <View style={styles.container}>
             <FlatList
                 data={images}
+                bounces={false}
+                alwaysBounceHorizontal={false}
                 renderItem={(itemData) => {
                     console.log("items in dbslider",itemData)
                     return (

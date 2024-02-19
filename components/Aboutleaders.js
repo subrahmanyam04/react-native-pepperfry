@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { Image, StyleSheet, Text, TouchableOpacity, View, Animated } from "react-native";
+import { Image, StyleSheet, Text, TouchableOpacity, View, Animated, Platform } from "react-native";
 import { AntDesign } from '@expo/vector-icons';
 import Aboutleaders3card from "./Aboutleaders3card";
 
@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
         ...StyleSheet.absoluteFillObject,
         backgroundColor: 'rgba(0, 0, 0, 0.8)',
         width: '100%',
-        height: "auto",
+        height: 'auto',
         // top: 2,
         // marginRight: 2,
         // marginLeft: 2
@@ -161,7 +161,7 @@ const styles = StyleSheet.create({
           marginBottom:5
     },
     image:{
-         height:346,
+         height: Platform.OS === "ios" ? 332 : 346,
          width:'100%',
          resizeMode:'contain'
     },

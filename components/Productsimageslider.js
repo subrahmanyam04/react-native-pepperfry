@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { FlatList, Image, StyleSheet, Text, View } from "react-native";
+import { FlatList, Image, Platform, StyleSheet, Text, View } from "react-native";
 import { windowWidth } from "../Util/Dimensions";
 import { Octicons, Ionicons, Feather, MaterialCommunityIcons } from '@expo/vector-icons'
 import { useRoute } from "@react-navigation/native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Productsoverlaycomponent from "./Productsoverlaycomponent";
 const Productsimageslider = () => {
     const [activeindex, setactiveindex] = useState(0)
 
@@ -31,7 +32,7 @@ const Productsimageslider = () => {
     const route = useRoute();
 
     const [aboutcard, Setaboutcard] = useState([''])
-    const [receivedimges,setimges]=useState('')
+    const [receivedimges,setimges]=useState([])
     console.log("i am the received images are",receivedimges)
     useEffect(() => {
         retrieveData();
@@ -84,45 +85,26 @@ const Productsimageslider = () => {
                 data={receivedimges}
                 horizontal={true}
                 pagingEnabled={true}
+                alwaysBounceHorizontal={false}
+                bounces={false}
                 showsHorizontalScrollIndicator={false}
                 renderItem={(itemData) => {
                     return (
+                        <>
                         <View style={styles.subconatiner} key={itemData.item.id}>
                             <View>
                                 <Image source={{ uri: itemData.item.imgurl }} style={styles.image} />
                             </View>
                         </View>
+                        {Platform.OS === "ios" ? <Productsoverlaycomponent /> : ""}
+                        </>
                     )
                 }}
                 onScroll={handlescroll}
                 keyExtractor={(item) => item.imgurl}
             />
 
-            {/* sharecontainer */}
-
-            <View style={styles.iconContainer}>
-                <View style={styles.iconBackgroundshare}>
-                    <Feather name="share-2" size={24} color="#181818" />
-                </View>
-            </View>
-
-
-            {/* wishlist container */}
-            <View style={styles.iconContainer}>
-                <View style={styles.iconBackground}>
-                    <Ionicons name="heart-outline" size={28} color="#181818" />
-                </View>
-            </View>
-
-            {/* similar products */}
-
-            {/* text container */}
-            <View style={styles.iconContainertext}>
-                <View style={styles.iconBackgroundtext}>
-                    <MaterialCommunityIcons name="cards-outline" size={28} color="#181818" style={{ marginHorizontal: 4 }} />
-                    <Text style={{ color: 'black', fontWeight: 'bold', fontSize: 14, marginHorizontal: 4 }}>View Similar Items</Text>
-                </View>
-            </View>
+            {Platform.OS === "android" ?  <Productsoverlaycomponent/> : "" }
 
             {/* dotted container goes here */}
             <View style={styles.dottericoncontainer}>
@@ -142,11 +124,13 @@ export default Productsimageslider;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+    //    position:"relative", 
         borderBottomColor: 'grey',
         borderBottomWidth: 0.75
     },
     subconatiner: {
         flex: 1,
+        
         flexDirection: 'column',
         backgroundColor: '#F0F8FF',
         width: windowWidth
@@ -164,6 +148,7 @@ const styles = StyleSheet.create({
         marginVertical: 1
     },
     iconContainer: {
+      
         position: 'absolute',
         top: 0,
         bottom: 0,
@@ -187,6 +172,7 @@ const styles = StyleSheet.create({
         borderRadius: 100,
     },
     iconContainertext: {
+      
         position: 'absolute',
         top: 0,
         bottom: 0,

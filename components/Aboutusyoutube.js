@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { View, FlatList, TouchableOpacity, Alert, Text, StyleSheet } from "react-native";
+import { View, FlatList, TouchableOpacity, Alert, Text, StyleSheet, Platform } from "react-native";
 import YoutubeIframe from "react-native-youtube-iframe";
 import { AntDesign } from '@expo/vector-icons'
 import { Dimensions } from 'react-native';
@@ -36,7 +36,7 @@ const Aboutusyoutube = () => {
     return (
       <View style={styles.yt}>
         <YoutubeIframe
-          height={195}
+          height={Platform.OS === "ios" ? 160 : 195}
           width={videoWidth}
           play={playing}
           videoId={item.url}
@@ -109,18 +109,18 @@ const styles = StyleSheet.create({
   innercontainer: {
     flex: 1,
     marginHorizontal: 22,
+   
   },
   yt: {
     flex: 1,
     borderRadius: 10,
     overflow: 'hidden',
-    borderRadius: 10,
-    overflow: 'hidden',
+   
   },
   navigationButtons: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    bottom: 118,
+    bottom: Platform.OS === "ios" ? "28%" : 118,
   },
   rowbuttoncontainer:{
       width:28,

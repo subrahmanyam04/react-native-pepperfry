@@ -5,7 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { NavigationContainer, useNavigation } from '@react-navigation/native'
 
 import Tabcontent from "../pages/Tabcontent";
-import { TouchableOpacity, View } from "react-native";
+import { Platform, TouchableOpacity, View } from "react-native";
 import { Ionicons } from '@expo/vector-icons'
 import Products from "../pages/Products";
 
@@ -33,19 +33,22 @@ const Navbars = () => {
                     <Stack.Screen name="Tabcontent" component={Tabcontent}
                         options={({ navigation }) => ({
                             headerShown: true,
+                           
                             headerLeft: () => (
 
                                 <TouchableOpacity onPress={() => navigation.goBack()}>
-                                    <View style={{ marginRight: 8, }}>
+                                    <View style={{ marginRight:8, }}>
                                         <Ionicons name="chevron-back-sharp" size={28} color="grey" />
                                     </View>
                                 </TouchableOpacity>
                             ),
-                            headerTitleStyle: { fontSize: 17, fontWeight: 'bold' },
+                            headerTitleStyle: { fontSize: 17, fontWeight: 'bold'},
+                            headerTitleAlign:"left",
+                           
                             headerRight: () => (
                                 <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                                    <Ionicons name="search" size={24} color="black" style={{ marginRight: 10 }} />
-                                    <Ionicons name="heart-outline" size={24} color="black" style={{ marginRight: 10 }} />
+                                    <Ionicons name="search" size={24} color="black" style={{ marginRight: Platform.OS === "android" ? 10 : 0}} />
+                                    <Ionicons name="heart-outline" size={24} color="black" style={{ marginRight: Platform.OS === "android" ? 10 : 0 }} />
                                     <Ionicons name="cart-outline" size={24} color="black" />
                                 </View>
                             ),

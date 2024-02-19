@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { StyleSheet, Text, TouchableOpacity, View, Animated, Image } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View, Animated, Image, Platform } from "react-native";
 import { AntDesign } from '@expo/vector-icons';
 
 const Aboutleaders3card = () => {
@@ -212,7 +212,7 @@ const styles = StyleSheet.create({
 
     image: {
       
-        height: 164,
+        height: Platform.OS === "ios" ? 154 : 164,
         width: '100%',
         resizeMode: 'contain',
         

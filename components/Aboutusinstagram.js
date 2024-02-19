@@ -93,6 +93,8 @@ const Aboutinstagram = () => {
                     data={sliderdata}
                     horizontal={true}
                     pagingEnabled={true}
+                    bounces={false}
+                    alwaysBounceHorizontal={false}
                     showsHorizontalScrollIndicator={false}
                     ref={flatListRef}
                     // getItemLayout={getItemLayout}

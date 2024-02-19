@@ -5,7 +5,7 @@ import Bottomtabnavigator from "./Bottomtabnavigator";
 import Giftcard from "../pages/Giftcard";
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons'
-import { Image, View } from "react-native";
+import { Image, Platform, View } from "react-native";
 
 
 
@@ -15,7 +15,7 @@ const Drawercomponent = () => {
   const navigation = useNavigation();
   const renderHeaderRightIcon = () => (
     <View style={{ flexDirection: 'row', marginRight: 10 }}>
-      <Image source={{uri:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHlrY9jyo62tkc5DgLLGgmjIXWeDd9-JnQKKFYtkNZMg&s'}} style={{height:24,aspectRatio: 1,marginRight:'70%'}}/>
+      <Image source={{uri:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHlrY9jyo62tkc5DgLLGgmjIXWeDd9-JnQKKFYtkNZMg&s'}} style={[{height:24,aspectRatio: 1},Platform.OS === "ios" ? {marginRight:"120%"} :{marginRight:"70%"}]}/>
       <Ionicons name="search" size={24} color="black" style={{ marginRight: 10 }} />
       <Ionicons name="heart-outline" size={24} color="black" style={{ marginRight: 10 }} />
       <Ionicons name="cart-outline" size={24} color="black" />

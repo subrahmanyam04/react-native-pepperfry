@@ -135,7 +135,9 @@ const Homefooter = () => {
                     <View style={styles.bankconatiner}>
                         <FlatList
                             data={bankcards}
-
+                            
+                            bounces={false}
+                            alwaysBounceHorizontal={false}
                             renderItem={(itemData) => {
                                 console.log('itemdata', itemData)
                                 return (
@@ -145,7 +147,9 @@ const Homefooter = () => {
                                 )
                             }}
                             keyExtractor={(item) => item.id}
-                            horizontal={true} //  true for horizontal scrolling
+                            horizontal={true}
+                            scrollEnabled={false}
+                             //  true for horizontal scrolling
                             showsHorizontalScrollIndicator={false}
                         />
 
@@ -179,13 +183,13 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         // marginLeft: 5,
         // marginRight: 5
-        marginHorizontal:5
+        marginHorizontal: 5
     },
     insideinnercontainer: {
         flex: 1,
         flexDirection: 'row',
         // marginHorizontal: 60,
-        justifyContent:'center',
+        justifyContent: 'center',
         marginTop: 8
         // marginRight:10
     },
@@ -207,26 +211,26 @@ const styles = StyleSheet.create({
     spacearound: {
         // marginLeft: 2,
         // marginRight: 5,
-        marginHorizontal:2,
+        marginHorizontal: 2,
         marginTop: 20
     },
     bankimages: {
         marginHorizontal: 2,
-        width: 40,
+        width: 38,
         height: 25,
         marginTop: 8
     },
     bankconatiner: {
         marginHorizontal: 12
     },
-    copytext:{
-        color:'#848484',
-        fontSize:14,
-        textAlign:'center',
-        fontWeight:'400'
+    copytext: {
+        color: '#848484',
+        fontSize: 14,
+        textAlign: 'center',
+        fontWeight: '400'
     },
-    copytextcontainer:{
-      marginTop:20,
-      marginBottom:25
+    copytextcontainer: {
+        marginTop: 20,
+        marginBottom: 25
     }
 })

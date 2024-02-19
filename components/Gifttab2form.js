@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from 'react';
-import { TextInput, StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { TextInput, StyleSheet, Text, View, TouchableOpacity, Platform } from "react-native";
 import Gifttab2infor from "./Gifttab2infor";
 
 const Gifttab2form = () => {
@@ -175,6 +175,7 @@ const styles = StyleSheet.create({
     },
     placeholder: {
         position: 'absolute',
+        bottom:Platform.OS === "ios" ? 2 : 0,
         fontSize: 16,
         color: 'gray',
     },

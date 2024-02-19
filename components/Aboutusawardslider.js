@@ -74,6 +74,8 @@ const Aboutusawardslider = () => {
                     ref={flatListRef}
                     horizontal={true}
                     pagingEnabled={true}
+                    alwaysBounceHorizontal={false}
+                    bounces={false}
                     showsHorizontalScrollIndicator={false}
                     renderItem={(itemData) => {
                         return (

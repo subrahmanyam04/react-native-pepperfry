@@ -3,7 +3,16 @@
     "name": "Pepperfry",
     "slug": "Pepperfry",
     "plugins": [
-      "@react-native-google-signin/google-signin"
+      "@react-native-google-signin/google-signin",
+      [
+        "expo-build-properties",
+        {
+          
+          "ios": {
+            "deploymentTarget": "14.0"
+          }
+        }
+      ]
     ],
     "version": "1.0.0",
     "orientation": "portrait",
@@ -18,7 +27,8 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.subbu123.PepperfryApp"
     },
     "android": {
       "googleServicesFile": "./google-services.json",

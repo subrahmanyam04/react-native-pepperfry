@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Image, StyleSheet, Text, View } from "react-native";
+import { Button, Image, Platform, StyleSheet, Text, View } from "react-native";
 import { Ionicons } from '@expo/vector-icons'
 
 const Gifttab1card = () => {
@@ -31,7 +31,7 @@ const Gifttab1card = () => {
 
                     <View style={styles.buttoncontainer}>
                     
-                            <Button title="BUY E-GIFT CARD"   color={'red'} />
+                            <Button title="BUY E-GIFT CARD"   color={Platform.OS === "ios" ? "white" : "red"} />
 
                     </View>
 
@@ -91,6 +91,8 @@ const styles = StyleSheet.create({
     },
     buttoncontainer: {
         marginTop: 14,
+        backgroundColor:Platform.OS === "ios" ? "red" : "",
+     
 
     },
     rowcon1text: {

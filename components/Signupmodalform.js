@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useState } from 'react';
-import { Alert, Modal, StyleSheet, Text, Pressable, View, StatusBar, Image, TextInput, Button, TouchableOpacity } from 'react-native';
+import { Alert, Modal, StyleSheet, Text, Pressable, View, StatusBar, Image, TextInput, Button, TouchableOpacity, Platform } from 'react-native';
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import { Feather } from '@expo/vector-icons'
 import { windowHeight } from "../Util/Dimensions";
@@ -12,6 +12,7 @@ import { connect } from 'react-redux';
 import { Settoken } from "../Redux/Actions/Tokenaction";
 import "expo-dev-client"
 import { Entypo } from '@expo/vector-icons'
+import { ScrollView } from "react-native-gesture-handler";
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import auth from '@react-native-firebase/auth';
 
@@ -41,9 +42,6 @@ const Signupmodalform = ({ Settoken, token }) => {
         setPassword(text);
     };
 
-    GoogleSignin.configure({
-        webClientId: '518917201034-32cov3h39la2nqmtf12o90vvs0vv75ji.apps.googleusercontent.com',
-    });
 
     useFocusEffect(
         // Hook from react-native navigation runs an effect when the screen comes into focus
@@ -145,45 +143,52 @@ const Signupmodalform = ({ Settoken, token }) => {
         }
     }
 
+    GoogleSignin.configure({
+        webClientId: '518917201034-32cov3h39la2nqmtf12o90vvs0vv75ji.apps.googleusercontent.com',
+    });
+
     async function onGoogleButtonPress() {
-        // Check if your device supports Google Play
-        // await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
-        // Get the users ID token
-        const { idToken } = await GoogleSignin.signIn();
-        console.log('this google sign in token', idToken)
-        const currentUser = auth().currentUser;
-        console.log("iam currentuser",currentUser)
-        // // const idToken2 = await currentUser.getIdToken;
-        const userEmail = auth().currentUser.email;
-        console.log('iam useremail',userEmail)
-        const userName = auth().currentUser.displayName
-        console.log('iam useremail',userName)
-        const userProfile = auth().currentUser.photoURL
-        console.log('iam useremail',userProfile)
-        // console.log('this google sign in token2', idToken2)
-        const authData = JSON.stringify({ idToken, userEmail, userName, userProfile });
-        await AsyncStorage.setItem('userAuthData', authData);
-
-        // Retrieve the stored token and update the state
-        // const storedToken = await AsyncStorage.getItem('userAuthData'); 
-        // Settoken(storedToken);
-        retrieveUserAuthData()
-        setEmail('')
-        setPassword('')
-        setModalVisible(false)
-        console.log('ok')
-        // Create a Google credential with the token
-        const googleCredential = auth.GoogleAuthProvider.credential(idToken);
-
-        // Sign-in the user with the credential
-        const user = auth().signInWithCredential(googleCredential);
-        user.then((users) => {
-            console.log("i am the user",users);
-        })
-            .catch((error) => {
-                console.log(error)
+            // Check if your device supports Google Play
+            // await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
+            // Get the users ID token
+            const { idToken } = await GoogleSignin.signIn();
+            console.log('this google sign in token', idToken)
+            const currentUser = auth().currentUser;
+            console.log("iam currentuser",currentUser)
+            // // const idToken2 = await currentUser.getIdToken;
+            const userEmail = auth().currentUser.email;
+            console.log('iam useremail',userEmail)
+            const userName = auth().currentUser.displayName
+            console.log('iam useremail',userName)
+            const userProfile = auth().currentUser.photoURL
+            console.log('iam useremail',userProfile)
+            // console.log('this google sign in token2', idToken2)
+            const authData = JSON.stringify({ idToken, userEmail, userName, userProfile });
+            await AsyncStorage.setItem('userAuthData', authData);
+     
+            // Retrieve the stored token and update the state
+            // const storedToken = await AsyncStorage.getItem('userAuthData');
+            // Settoken(storedToken);
+            retrieveUserAuthData()
+            setEmail('')
+            setPassword('')
+            setModalVisible(false)
+            console.log('ok')
+            // Create a Google credential with the token
+            const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+     
+            // Sign-in the user with the credential
+            const user = auth().signInWithCredential(googleCredential);
+            user.then((users) => {
+                console.log("i am the user",users);
             })
-    }
+                .catch((error) => {
+                    console.log(error)
+                })
+        }
+
+
+
 
     return (
         <Modal
@@ -193,108 +198,118 @@ const Signupmodalform = ({ Settoken, token }) => {
             onRequestClose={closeModal}>
 
             <View style={styles.modalBackground}>
-                <View style={styles.modalContainer}>
 
+                <View style={styles.modalContainer}>
                     <View style={styles.iconcontainer}>
                         <Feather onPress={closeModal} name="x" color={'red'} size={30} />
                     </View>
 
                     {/* Actual form starts from here */}
+                    <ScrollView bounces={false} alwaysBounceVertical={false} showsVerticalScrollIndicator={false}>
 
-                    <View style={styles.subofmaincontianer}>
-                        {/* image */}
-                        <View style={styles.imagecontainer}>
-                            <Image source={{ uri: 'https://ii1.pepperfry.com/assets/7e9657cd-cb98-40cf-989d-5e5c1d9d4fa5.jpg' }} style={{ width: '100%', height: 100, resizeMode: 'contain' }} />
-                        </View>
-
-                        <View>
-                            <Text style={styles.modalText}>Sign Up Or Log In</Text>
-                        </View>
-
-                        <View style={{ marginBottom: 10 }}>
-                            <TextInput
-                                style={styles.input}
-
-                                onChangeText={handleEmailChange}
-                                value={email}
-                                placeholder="Enter Your Mail Id"
-                                caretHidden={false} // Show the cursor
-                                cursorColor='#ff4500'  // Set the cursor color to red
-                            // keyboardType="numeric"
-                            />
-                            {error ? <Text>please enter the valid mail id</Text> : ""}
-                        </View>
-                        <View style={{ marginBottom: 10 }}>
-                            <TextInput
-                                style={styles.input}
-                                onChangeText={handlePasswordChange}
-                                value={password}
-                                placeholder="Enter Password"
-                                caretHidden={false} // Show the cursor
-                                cursorColor='#ff4500'
-                                secureTextEntry={!showPassword} //password text is here
-                            />
-                            <View style={{ position: 'absolute', top: 0, bottom: 10, left: 0, right: 10, justifyContent: 'flex-end', alignItems: 'flex-end' }}>
-                                {showPassword ? (
-                                    <Entypo name='eye' color={'black'} size={18} onPress={toggleShowPassword} />
-                                ) : (
-                                    <Entypo name='eye-with-line' color={'black'} size={18} onPress={toggleShowPassword} />
-                                )}
-
-
+                        <View style={styles.subofmaincontianer}>
+                            {/* image */}
+                            <View style={styles.imagecontainer}>
+                                <Image source={{ uri: 'https://ii1.pepperfry.com/assets/7e9657cd-cb98-40cf-989d-5e5c1d9d4fa5.jpg' }} style={{ width: '100%', height: 100, resizeMode: 'contain' }} />
                             </View>
-                        </View>
 
-                        <View>
-                            {login ? <Button color={'#ff4500'} onPress={() => handlesignin(email, password)} title="Sign In" /> : <Button onPress={() => handlesignup(email, password)} title="Sign Up" />}
-                        </View>
+                            <View>
+                                <Text style={styles.modalText}>Sign Up Or Log In</Text>
+                            </View>
+                            <View style={{ marginBottom: 10 }}>
+                                <TextInput
+                                    style={styles.input}
 
-                        <View style={styles.signverficmethodscontainer}>
-                            <Text style={styles.signverficmethods}>If you don't have an account
-                                <Text style={styles.signtextbuttons} onPress={() => setLogin(false)}>  SIGN UP </Text>
-                                <Text> else </Text>
-                                <Text style={styles.signtextbuttons} onPress={() => setLogin(true)}> SIGN IN</Text>
-                            </Text>
-                        </View>
+                                    onChangeText={handleEmailChange}
+                                    value={email}
+                                    placeholder="Enter Your Mail Id"
+                                    caretHidden={false} // Show the cursor
+                                    cursorColor='#ff4500'  // Set the cursor color to red
+                                // keyboardType="numeric"
+                                />
+                                {error ? <Text>please enter the valid mail id</Text> : ""}
+                            </View>
+                            <View style={{ marginBottom: 10 }}>
+                                <TextInput
+                                    style={styles.input}
+                                    onChangeText={handlePasswordChange}
+                                    value={password}
+                                    placeholder="Enter Password"
+                                    caretHidden={false} // Show the cursor
+                                    cursorColor='#ff4500'
+                                    secureTextEntry={!showPassword} //password text is here
+                                />
+                                <View style={{ position: 'absolute', top: 0, bottom: 10, left: 0, right: 10, justifyContent: 'flex-end', alignItems: 'flex-end' }}>
+                                    {showPassword ? (
+                                        <Entypo name='eye' color={'black'} size={18} onPress={toggleShowPassword} />
+                                    ) : (
+                                        <Entypo name='eye-with-line' color={'black'} size={18} onPress={toggleShowPassword} />
+                                    )}
 
 
-                        <View style={styles.termstextcontainer}>
-                            <Text style={{ textAlign: 'center' }}>By continuing, you agree to our Terms & Conditions</Text>
-                            <Text style={[styles.termstext, { textAlign: 'center' }]}>Or</Text>
-                            <Text style={{ textAlign: 'center' }}>continue with</Text>
-                        </View>
-
-
-                        {/* google sign in button */}
-
-                        <View>
-                            <TouchableOpacity activeOpacity={1}
-                                onPress={() => onGoogleButtonPress().then(() => console.log('Signed in with Google!'))}>
-                                <View style={styles.googlecontainer}>
-
-                                    <Image source={{ uri: 'https://w7.pngwing.com/pngs/989/129/png-transparent-google-logo-google-search-meng-meng-company-text-logo-thumbnail.png' }} style={{ width: 40, height: 35, resizeMode: 'contain' }} />
-
-                                    <Text style={styles.socialtext}> GOOGLE</Text>
                                 </View>
-                            </TouchableOpacity>
+                            </View>
+
+
+
+
+                            <View style={login ? styles.iossigInbackgroundcontainer : styles.iossignUpbacgroundcontainer}>
+                                {login ?
+
+                                    <Button color={Platform.OS === "android" ? "#ff4500" : "white"} onPress={() => handlesignin(email, password)} title="Sign In" /> : <Button color={Platform.OS === "android" ? "#0073CF" : "white"} onPress={() => handlesignup(email, password)} title="Sign Up" />}
+                            </View>
+                            <View style={styles.signverficmethodscontainer}>
+                                <Text style={styles.signverficmethods}>If you don't have an account
+                                    <TouchableOpacity onPress={() => setLogin(false)} activeOpacity={1}>
+                                        <Text style={styles.signtextbuttons} >  SIGN UP </Text>
+                                    </TouchableOpacity>
+                                    <Text> else </Text>
+                                    <TouchableOpacity onPress={() => setLogin(true)} activeOpacity={1}>
+                                        <Text style={styles.signtextbuttons} > SIGN IN </Text>
+                                    </TouchableOpacity>
+                                </Text>
+                            </View>
+
+
+                            <View style={styles.termstextcontainer}>
+                                <Text style={{ textAlign: 'center' }}>By continuing, you agree to our Terms & Conditions</Text>
+                                <Text style={[styles.termstext, { textAlign: 'center' }]}>Or</Text>
+                                <Text style={{ textAlign: 'center' }}>continue with</Text>
+                            </View>
+
+
+                            {/* google sign in button */}
+
+                            <View>
+                                <TouchableOpacity activeOpacity={1}  onPress={() => onGoogleButtonPress().then(() => console.log('Signed in with Google!'))}>
+                                    <View style={styles.googlecontainer}>
+
+                                        <Image source={{ uri: 'https://w7.pngwing.com/pngs/989/129/png-transparent-google-logo-google-search-meng-meng-company-text-logo-thumbnail.png' }} style={{ width: 40, height: 35, resizeMode: 'contain' }} />
+
+                                        <Text style={styles.socialtext}> GOOGLE</Text>
+                                    </View>
+                                </TouchableOpacity>
+                            </View>
+
+
+                            {/* Facebook sign in button */}
+
+                            <View>
+                                <TouchableOpacity activeOpacity={1}>
+                                    <View style={styles.googlecontainer}>
+
+                                        <EvilIcons name='sc-facebook' color={'blue'} size={40} />
+                                        <Text style={styles.socialtext}>FACEBOOK</Text>
+                                    </View>
+                                </TouchableOpacity>
+                            </View>
+
                         </View>
-
-
-                        {/* Facebook sign in button */}
-
-                        <View>
-                            <TouchableOpacity activeOpacity={1}>
-                                <View style={styles.googlecontainer}>
-
-                                    <EvilIcons name='sc-facebook' color={'blue'} size={40} />
-                                    <Text style={styles.socialtext}>FACEBOOK</Text>
-                                </View>
-                            </TouchableOpacity>
-                        </View>
-
-                    </View>
+                    </ScrollView>
                 </View>
+
             </View>
+
         </Modal>
     )
 }
@@ -331,7 +346,7 @@ const styles = StyleSheet.create({
     modalContainer: {
         width: '100%',
         backgroundColor: 'white',
-        marginTop: windowHeight - 700
+        marginTop: Platform.OS === "android" ? windowHeight - 700 : windowHeight - 550,
         // paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
     },
     button: {
@@ -381,15 +396,20 @@ const styles = StyleSheet.create({
         borderWidth: 1
     },
     signverficmethodscontainer: {
-        marginVertical: 10
+        // flex:0.9,
+        marginVertical: 10,
+        // marginHorizontal:Platform.OS === "ios" ? 2 : "",
+        // justifyContent:'center',
+        // alignItems:"center"
     },
     signverficmethods: {
         textAlign: 'center',
         fontSize: 16,
-        color: 'black'
+        color: 'black',
     },
     signtextbuttons: {
-        color: 'blue'
+        top: 2,
+        color: 'blue',
     },
     termstextcontainer: {
         flexDirection: 'column',
@@ -418,6 +438,12 @@ const styles = StyleSheet.create({
         fontWeight: '700',
         fontSize: 16
     },
+    iossigInbackgroundcontainer: {
+        backgroundColor: Platform.OS === "ios" ? "#ff4500" : ""
+    },
+    iossignUpbacgroundcontainer: {
+        backgroundColor: Platform.OS === "ios" ? "#0073CF" : ""
+    }
 
 
 });

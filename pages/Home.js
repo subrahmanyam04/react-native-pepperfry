@@ -22,7 +22,7 @@ const Home = () => {
             <View style={styles.topBorder} />
             <ScrollView
                  alwaysBounceVertical={false}
-                //  alwaysBounceVertical={false}
+                bounces={false}
                 // Enables bouncing vertically
                 style={[{ backgroundColor: 'white' }]}
             >

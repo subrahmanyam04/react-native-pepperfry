@@ -22,7 +22,8 @@ const Homeminislider = () => {
         <View style={styles.container}>
                     <FlatList
         data={imagedata}
-        
+        bounces={false}
+        alwaysBounceHorizontal={false}
         renderItem={(itemData)=>{ 
             console.log('itemdata',itemData)
             return(

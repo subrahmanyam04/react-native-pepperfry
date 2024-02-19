@@ -6,7 +6,7 @@ import Myaccountcard from "./Myaccountcard";
 
 const Myaccountlayout = () => {
     return(
-        <ScrollView showsVerticalScrollIndicator={false}>
+        <ScrollView showsVerticalScrollIndicator={false} bounces={false} alwaysBounceVertical={false}>
             <Myaccountprofile/>
             <Myaccountcard/>
             <Logout/>

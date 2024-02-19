@@ -12,7 +12,7 @@ const navigation = useNavigation()
   return (
     <>
 
-      <ScrollView>
+      <ScrollView bounces={false} alwaysBounceVertical={false}>
 
         <Gifttab1layout />
 
@@ -47,7 +47,8 @@ const styles = StyleSheet.create({
       flex:1,
       justifyContent:'center',
       alignItems:'center',
-      marginTop:15
+      marginTop:15,
+      marginBottom:18
   },
   button: {
     borderWidth: 1,
