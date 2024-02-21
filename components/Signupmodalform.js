@@ -145,7 +145,12 @@ const Signupmodalform = ({ Settoken, token }) => {
 
     GoogleSignin.configure({
         webClientId: '518917201034-32cov3h39la2nqmtf12o90vvs0vv75ji.apps.googleusercontent.com',
+        iosClientId: '518917201034-h660gtpi41d54bmo1crsa96ec8qh68ar.apps.googleusercontent.com',
+        androidClientId:"518917201034-60p0ni6rsn43ng7h8l1aggk42tllf01c.apps.googleusercontent.com"
     });
+
+  
+
 
     async function onGoogleButtonPress() {
             // Check if your device supports Google Play
@@ -219,13 +224,13 @@ const Signupmodalform = ({ Settoken, token }) => {
                             <View style={{ marginBottom: 10 }}>
                                 <TextInput
                                     style={styles.input}
-
+                           
                                     onChangeText={handleEmailChange}
                                     value={email}
                                     placeholder="Enter Your Mail Id"
                                     caretHidden={false} // Show the cursor
                                     cursorColor='#ff4500'  // Set the cursor color to red
-                                // keyboardType="numeric"
+                                keyboardType="numeric"
                                 />
                                 {error ? <Text>please enter the valid mail id</Text> : ""}
                             </View>

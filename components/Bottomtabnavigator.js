@@ -19,7 +19,7 @@ const Bottomtabnavigator = () => {
 
             tabBarStyle: { backgroundColor: 'white', width: '100%', alignSelf:'center' },
             tabBarActiveTintColor: '#ff4500',
-            tabBarInactiveTintColor:'black',
+            tabBarInactiveTintColor:'black',          
             // headerRight : ({tintColor}) =>
             // <Ionicons icon='add' size={24} color={tintColor} onPress={() => {navigation.navigate('Manage Express')}}/>
 
