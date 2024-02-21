@@ -5,6 +5,7 @@ import firebase from 'firebase/compat/app'
 // import * as firebase from "firebase";
 import 'firebase/compat/auth'
 import 'firebase/compat/firestore'
+import { Alert } from 'react-native';
 // import {getAuth , GoogleAuthProvider , } from 'firebase/auth'; 
 // import { FacebookAuthProvider } from "firebase/auth";
 // import { getDatabase, ref, set } from "firebase/database";
@@ -25,6 +26,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 if(!firebase.apps.length){
+  console.log('i am in firebase.js',firebase.apps.length)
     firebase.initializeApp(firebaseConfig)
 }
 

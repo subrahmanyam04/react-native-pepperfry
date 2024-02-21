@@ -16,6 +16,11 @@ import { ScrollView } from "react-native-gesture-handler";
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import auth from '@react-native-firebase/auth';
 
+
+
+
+
+
 const Signupmodalform = ({ Settoken, token }) => {
 
     const [modalVisible, setModalVisible] = useState(false);
@@ -351,7 +356,7 @@ const styles = StyleSheet.create({
     modalContainer: {
         width: '100%',
         backgroundColor: 'white',
-        marginTop: Platform.OS === "android" ? windowHeight - 700 : windowHeight - 550,
+        marginTop: Platform.OS === "android" ? windowHeight - 700 : windowHeight - 650,
         // paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
     },
     button: {
