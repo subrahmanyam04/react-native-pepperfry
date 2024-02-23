@@ -1,38 +1,28 @@
 import React, { useState } from "react";
-import { StyleSheet, Text,  TouchableOpacity, View } from "react-native";
-import { Entypo } from '@expo/vector-icons'
-
+import controls from "./Imports";
 const Productsquantity = () => {
     const [open, setopen] = useState(false)
-
-    const handlepress = () => {
-        setopen(!open);
-    }
+    const handlepress = () => { setopen(!open); }
     return(
-        <View style={styles.container}>
-            <View style={styles.innercontainer}>
-            <TouchableOpacity activeOpacity={1} onPress={handlepress}>
-                    <View style={styles.rowcontainer}>
-                        <View>
-                            <Text style={{ color: 'black', fontSize: 18 }}>QTY1</Text>
-                        </View>
-                        <View>
-                            {open ? <Entypo name='chevron-small-up' color={'grey'} size={28} /> : <Entypo name='chevron-small-down' color={'grey'} size={28} />}
-
-                        </View>
-                    </View>
-                </TouchableOpacity>
-           
-            </View>
-            <View style={{ borderBottomColor: "#dbdcdc", borderBottomWidth: 8 }} />
-        </View>
-        
+        <controls.View style={styles.container}>
+            <controls.View style={styles.innercontainer}>
+            <controls.TouchableOpacity activeOpacity={1} onPress={handlepress}>
+                    <controls.View style={styles.rowcontainer}>
+                        <controls.View>
+                            <controls.Text style={{ color: 'black', fontSize: 18 }}>QTY1</controls.Text>
+                        </controls.View>
+                        <controls.View>
+                            {open ? <controls.Entypo name='chevron-small-up' color={'grey'} size={28} /> : <controls.Entypo name='chevron-small-down' color={'grey'} size={28} />}
+                        </controls.View>
+                    </controls.View>
+                </controls.TouchableOpacity>
+            </controls.View>
+            <controls.View style={{ borderBottomColor: "#dbdcdc", borderBottomWidth: 8 }} />
+        </controls.View> 
     )
 }
-
 export default Productsquantity;
-
-const styles = StyleSheet.create({
+const styles = controls.StyleSheet.create({
     container:{
         flex:1,
         marginBottom: 10,

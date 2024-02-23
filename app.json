@@ -7,7 +7,6 @@
       [
         "expo-build-properties",
         {
-          
           "ios": {
             "deploymentTarget": "14.0",
             "useFrameworks" : "static"
@@ -28,7 +27,6 @@
       "**/*"
     ],
     "ios": {
-      "googleServicesFile": "./GoogleService-Info.plist",
       "supportsTablet": true,
       "bundleIdentifier": "com.subbu123.PepperfryApp"
     },

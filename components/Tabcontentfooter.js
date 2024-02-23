@@ -1,76 +1,32 @@
 import React from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Ionicons } from '@expo/vector-icons'
-import { useNavigation } from "@react-navigation/native";
-
+import controls from "./Imports";
 const Tabcontentfooter = () => {
-    const navigation = useNavigation();
+    const navigation = controls.useNavigation();
+    const footerdata = [
+        { id: 1, navigator: "Home", Icon: "home-outline", color: "#ff4500", title: "Home" },
+        { id: 2, navigator: "Myaccount", Icon: "person-outline", color: "black", title: "Myaccount" },
+        { id: 3, navigator: "Giftcard", Icon: "gift-outline", color: "black", title: "Gift Card" },
+        { id: 4, navigator: "Store", Icon: "location-outline", color: "black", title: "Store" },
+        { id: 5, navigator: "Categories", Icon: "information-circle-outline", color: "black", title: "Categories" },
+    ]
     return (
-        <View style={styles.footer}>
-            <View style={styles.conatiner}>
-                {/* 1 */}
-                <TouchableOpacity activeOpacity={1} onPress={() => { navigation.navigate('Home') }}>
-                    <View style={styles.rowcontainer}>
-                        <View>
-                            <Ionicons name='home-outline' color={'#ff4500'} size={24} />
-                        </View>
-                        <View>
-                            <Text style={styles.rowcontainerhometext} numberOfLines={1} ellipsizeMode="tail">Home</Text>
-                        </View>
-                    </View>
-                </TouchableOpacity>
-                {/* 2 */}
-                <TouchableOpacity activeOpacity={1} onPress={() => { navigation.navigate('Myaccount') }}>
-                    <View style={styles.rowcontainer}>
-                        <View>
-                            <Ionicons name='person-outline' size={24} color={'black'} />
-                        </View>
-                        <View>
-                            <Text style={styles.rowcontainertext} numberOfLines={1} ellipsizeMode="tail">Myaccount</Text>
-                        </View>
-                    </View>
-                </TouchableOpacity>
-                {/* 3 */}
-                <TouchableOpacity activeOpacity={1} onPress={() => { navigation.navigate('Giftcard') }}>
-                    <View style={styles.rowcontainer}>
-                        <View>
-                            <Ionicons name='gift-outline' size={24} color={'black'} />
-                        </View>
-                        <View>
-                            <Text style={styles.rowcontainertext} numberOfLines={1} ellipsizeMode="tail">Gift Card</Text>
-                        </View>
-                    </View>
-                </TouchableOpacity>
-                {/* 4 */}
-                <TouchableOpacity activeOpacity={1} onPress={() => { navigation.navigate('Store') }}>
-                    <View style={styles.rowcontainer}>
-                        <View>
-                            <Ionicons name='location-outline' size={24} color={'black'} />
-                        </View>
-                        <View>
-                            <Text style={styles.rowcontainertext} numberOfLines={1} ellipsizeMode="tail">Store</Text>
-                        </View>
-                    </View>
-                </TouchableOpacity>
-                {/* 5 */}
-                <TouchableOpacity activeOpacity={1} onPress={() => { navigation.navigate('Categories') }}>
-                    <View style={styles.rowcontainer}>
-                        <View>
-                            <Ionicons name='information-circle-outline' size={24} color={'black'} />
-                        </View>
-                        <View>
-                            <Text style={styles.rowcontainertext} numberOfLines={1} ellipsizeMode="tail">Categories</Text>
-                        </View>
-                    </View>
-                </TouchableOpacity>
-            </View>
-        </View>
+        <controls.View style={styles.footer}>
+            <controls.View style={styles.conatiner}>
+                {footerdata.map((data) => (
+                    <controls.TouchableOpacity activeOpacity={1} onPress={() => { navigation.navigate(data.navigator) }} key={data.id}>
+                        <controls.View style={styles.rowcontainer}>
+                            <controls.View><Ionicons name={data.Icon} color={data.color} size={24} /></controls.View>
+                            <controls.View><controls.Text style={data.id === 1 ? styles.rowcontainerhometext : styles.rowcontainertext} numberOfLines={1} ellipsizeMode="tail">{data.title}</controls.Text></controls.View>
+                        </controls.View>
+                    </controls.TouchableOpacity>
+                ))}
+            </controls.View>
+        </controls.View>
     )
 }
-
 export default Tabcontentfooter;
-
-const styles = StyleSheet.create({
+const styles = controls.StyleSheet.create({
     footer: {
         position: "absolute",
         bottom: 0,
@@ -95,8 +51,6 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        // borderColor: 'black',
-        // borderWidth: 1
     },
     rowcontainertext: {
         color: 'black',

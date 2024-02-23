@@ -1,35 +1,25 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import { ImageBackground } from 'react-native';
-import Gifttab1card from "./Gifttab1card";
 import Gifttab2form from "./Gifttab2form";
-
+import controls from "./Imports";
 const Gifttab2layout = () => {
     return (
-            <View style={styles.container}>
-              
-                <ImageBackground source={{uri:'https://ii1.pepperfry.com/media/catalog/studio/155/1695727144_erode_web.jpg'}}   style={styles.image}>
-                 
+            <controls.View style={styles.container}>
+                <controls.ImageBackground source={{uri:'https://ii1.pepperfry.com/media/catalog/studio/155/1695727144_erode_web.jpg'}} style={styles.image}>
                  <Gifttab2form/> 
-                </ImageBackground>
-            </View>
-        
+                </controls.ImageBackground>
+            </controls.View>
     )
 }
 export default Gifttab2layout;
-const styles = StyleSheet.create({
+const styles = controls.StyleSheet.create({
     container: {
         flex: 1,
-        // backgroundColor:'red',
     },
     image: {
-  
-        width: '100%', // Width will take the full width of the container
+        width: '100%', 
         height: '100%',
-        // flex:1,
         resizeMode:'contain'
       },
-
       headingtext:{
         color:'black',
         fontSize:16,

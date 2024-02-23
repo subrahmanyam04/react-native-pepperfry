@@ -1,136 +1,71 @@
 import React, { useEffect, useState } from "react";
-import { FlatList, Image, Platform, StyleSheet, Text, View } from "react-native";
 import { windowWidth } from "../Util/Dimensions";
-import { Octicons, Ionicons, Feather, MaterialCommunityIcons } from '@expo/vector-icons'
-import { useRoute } from "@react-navigation/native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Productsoverlaycomponent from "./Productsoverlaycomponent";
+import controls from "./Imports";
 const Productsimageslider = () => {
     const [activeindex, setactiveindex] = useState(0)
-
-    const imageuels = [
-        {
-            id: 1,
-            url: 'https://ii1.pepperfry.com/media/catalog/product/e/l/800x400/elegant-3-seater-sofa-in-grey-colour-elegant-3-seater-sofa-in-grey-colour-zkgiy3.jpg',
-        },
-        {
-            id: 2,
-            url: 'https://ii1.pepperfry.com/media/catalog/product/e/l/800x400/elegant-3-seater-sofa-in-grey-colour-elegant-3-seater-sofa-in-grey-colour-zkgiy3.jpg',
-        },
-        {
-            id: 3,
-            url: 'https://ii1.pepperfry.com/media/catalog/product/e/l/800x400/elegant-3-seater-sofa-in-grey-colour-elegant-3-seater-sofa-in-grey-colour-zkgiy3.jpg',
-        },
-    ]
-
     const handlescroll = (event) => {
         const scrollposition = event.nativeEvent.contentOffset.x;
         const index = Math.round(scrollposition / windowWidth);
         setactiveindex(index)
     }
-
-    const route = useRoute();
-
-    const [aboutcard, Setaboutcard] = useState([''])
+    const route = controls.useRoute();
     const [receivedimges,setimges]=useState([])
-    console.log("i am the received images are",receivedimges)
-    useEffect(() => {
-        retrieveData();
-
-    }, [])
-    // Retrieve the data
+    useEffect(() => { retrieveData(); }, [])
     const retrieveData = async () => {
         try {
             const storedDataString = await AsyncStorage.getItem('aboutcarddata');
             if (storedDataString !== null) {
-                // Parse the JSON string back to an object
                 const storedData = JSON.parse(storedDataString);
-                console.log('Data retrieved successfully:', storedData);
-                Setaboutcard(storedData)
                 setimges(storedData[0].imgesurl)
-                // await AsyncStorage.removeItem('aboutcarddata');
-                console.log('Local storage cleared');
-
-            } else {
-                console.log('No data found');
-            }
+            } 
         } catch (error) {
             console.error('Error retrieving data:', error);
-        }
-    };
-
-    // console.log('aboutcard in imgsludeer',aboutcard)
-    //   const img = aboutcard[0].imgesurl
-    //   console.log("recevied successfully",img)
-
+        } };
     return (
-        <View style={styles.container}>
-
-            <View style={{ flex: 1, flexDirection: 'column', marginVertical: 8, marginHorizontal: 8 }}>
-                <Text style={{ color: '#343534', fontWeight: '600', fontSize: 16 }}>
-                    Elegant {route.params.screens} in Grey Colour.
-                </Text>
-                <Text style={{ color: '#ff4500', fontWeight: '500', fontSize: 16, marginVertical: 2 }}>
-                    By The Alankarr.
-                </Text>
-
-
-                <Text>
-                    <Ionicons name="eye-outline" size={14} color="#181818" />
-                    <Text style={{ color: '#484a49', fontSize: 12, fontWeight: '500' }}> 33 People are Viewing this Product Right Now</Text>
-                </Text>
-
-            </View>
-            <FlatList
-                data={receivedimges}
-                horizontal={true}
-                pagingEnabled={true}
-                alwaysBounceHorizontal={false}
-                bounces={false}
-                showsHorizontalScrollIndicator={false}
+        <controls.View style={styles.container}>
+            <controls.View style={{ flex: 1, flexDirection: 'column', marginVertical: 8, marginHorizontal: 8 }}>
+                <controls.Text style={{ color: '#343534', fontWeight: '600', fontSize: 16 }}>Elegant {route.params.screens} in Grey Colour.</controls.Text>
+                <controls.Text style={{ color: '#ff4500', fontWeight: '500', fontSize: 16, marginVertical: 2 }}>By The Alankarr.</controls.Text>
+                <controls.Text>
+                    <controls.Ionicons name="eye-outline" size={14} color="#181818" />
+                    <controls.Text style={{ color: '#484a49', fontSize: 12, fontWeight: '500' }}> 33 People are Viewing this Product Right Now</controls.Text>
+                </controls.Text>
+            </controls.View>
+            <controls.FlatList data={receivedimges} horizontal={true} pagingEnabled={true} alwaysBounceHorizontal={false} bounces={false} showsHorizontalScrollIndicator={false}
                 renderItem={(itemData) => {
                     return (
                         <>
-                        <View style={styles.subconatiner} key={itemData.item.id}>
-                            <View>
-                                <Image source={{ uri: itemData.item.imgurl }} style={styles.image} />
-                            </View>
-                        </View>
-                        {Platform.OS === "ios" ? <Productsoverlaycomponent /> : ""}
+                        <controls.View style={styles.subconatiner} key={itemData.item.id}>
+                            <controls.View><controls.Image source={{ uri: itemData.item.imgurl }} style={styles.image} /></controls.View>
+                        </controls.View>
+                        {controls.Platform.OS === "ios" ? <Productsoverlaycomponent /> : ""}
                         </>
                     )
                 }}
-                onScroll={handlescroll}
-                keyExtractor={(item) => item.imgurl}
+                onScroll={handlescroll} keyExtractor={(item) => item.imgurl}
             />
-
-            {Platform.OS === "android" ?  <Productsoverlaycomponent/> : "" }
-
-            {/* dotted container goes here */}
-            <View style={styles.dottericoncontainer}>
+            {controls.Platform.OS === "android" ?  <Productsoverlaycomponent/> : "" }
+            <controls.View style={styles.dottericoncontainer}>
                 {receivedimges && receivedimges.map((data, index) => (
-                    <View style={{ marginHorizontal: 4 }} key={data.imgurl}>
-                        {activeindex === index ? (<Octicons name='dot-fill' color={'#ff4500'} size={16} />) : (<Octicons name='dot' color={'grey'} size={16} />)}
-                    </View>
+                    <controls.View style={{ marginHorizontal: 4 }} key={data.imgurl}>
+                        {activeindex === index ? (<controls.Octicons name='dot-fill' color={'#ff4500'} size={16} />) : (<controls.Octicons name='dot' color={'grey'} size={16} />)}
+                    </controls.View>
                 ))}
-            </View>
-
-        </View>
+            </controls.View>
+        </controls.View>
     )
 }
-
 export default Productsimageslider;
-
-const styles = StyleSheet.create({
+const styles = controls.StyleSheet.create({
     container: {
         flex: 1,
-    //    position:"relative", 
         borderBottomColor: 'grey',
         borderBottomWidth: 0.75
     },
     subconatiner: {
-        flex: 1,
-        
+        flex: 1,  
         flexDirection: 'column',
         backgroundColor: '#F0F8FF',
         width: windowWidth
@@ -148,7 +83,6 @@ const styles = StyleSheet.create({
         marginVertical: 1
     },
     iconContainer: {
-      
         position: 'absolute',
         top: 0,
         bottom: 0,
@@ -172,7 +106,6 @@ const styles = StyleSheet.create({
         borderRadius: 100,
     },
     iconContainertext: {
-      
         position: 'absolute',
         top: 0,
         bottom: 0,
@@ -191,5 +124,4 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         backgroundColor: 'white'
     }
-
 })

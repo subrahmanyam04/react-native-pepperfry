@@ -1,7 +1,5 @@
 import React, { useRef, useState } from "react";
-import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { AntDesign } from '@expo/vector-icons'
-import { windowWidth } from "../Util/Dimensions";
+import controls from "./Imports";
 
 const Aboutusawardslider = () => {
     const flatListRef = useRef();
@@ -37,10 +35,7 @@ const Aboutusawardslider = () => {
             year: '2011',
             infor: 'Home Trendsetter Award – Architecture Reconnect Summit'
         },
-
     ]
-
-
     const handleNext = () => {
         if (currentIndex < icondata.length - 1) {
             setCurrentIndex(currentIndex + 1);
@@ -50,7 +45,6 @@ const Aboutusawardslider = () => {
             });
         }
     };
-
     const handlePrev = () => {
         if (currentIndex > 0) {
             setCurrentIndex(currentIndex - 1);
@@ -60,73 +54,40 @@ const Aboutusawardslider = () => {
             });
         }
     };
-
     return (
-        <View style={styles.container}>
-            <View style={styles.innercontainer}>
-                <View style={styles.headingtextcontainer}>
-                    <Text style={styles.headingtext}>
-                        AWARDS AND RECOGNITION
-                    </Text>
-                </View>
-                <FlatList
-                    data={icondata}
-                    ref={flatListRef}
-                    horizontal={true}
-                    pagingEnabled={true}
-                    alwaysBounceHorizontal={false}
-                    bounces={false}
-                    showsHorizontalScrollIndicator={false}
+        <controls.View style={styles.container}>
+            <controls.View style={styles.innercontainer}>
+                <controls.View style={styles.headingtextcontainer}>
+                    <controls.Text style={styles.headingtext}>AWARDS AND RECOGNITION</controls.Text>
+                </controls.View>
+                <controls.FlatList data={icondata} ref={flatListRef} horizontal={true} pagingEnabled={true} alwaysBounceHorizontal={false} bounces={false} showsHorizontalScrollIndicator={false}
                     renderItem={(itemData) => {
                         return (
-                            <View style={styles.subcontainer} key={itemData.item.id}>
-
-                                <View style={styles.iconimagecontainer}>
-                                    <Image source={{ uri: itemData.item.url }} style={styles.image} />
-                                </View>
-
-                                <View>
-                                    <Text style={styles.yeartext}>{itemData.item.year}</Text>
-                                </View>
-
-                                <View>
-                                    <Text style={styles.infortext}>
-                                        {itemData.item.infor}
-                                    </Text>
-                                </View>
-
-                            </View>
-
+                            <controls.View style={styles.subcontainer} key={itemData.item.id}>
+                                <controls.View style={styles.iconimagecontainer}>
+                                    <controls.Image source={{ uri: itemData.item.url }} style={styles.image} />
+                                </controls.View>
+                                <controls.View><controls.Text style={styles.yeartext}>{itemData.item.year}</controls.Text></controls.View>
+                                <controls.View><controls.Text style={styles.infortext}>{itemData.item.infor}</controls.Text></controls.View>
+                            </controls.View>
                         )
                     }}
                     keyExtractor={(item) => item.id}
                 />
-
-                <View style={styles.navigationButtons}>
-
-                    <TouchableOpacity onPress={handlePrev} activeOpacity={1} >
-
-                        <AntDesign name='left' color={'grey'} size={28} />
-
-                    </TouchableOpacity>
-
-                    <TouchableOpacity onPress={handleNext} activeOpacity={1}>
-
-                        <AntDesign name='right' color={'grey'} size={28} />
-
-                    </TouchableOpacity>
-                </View>
-
-
-            </View>
-
-        </View>
+                <controls.View style={styles.navigationButtons}>
+                    <controls.TouchableOpacity onPress={handlePrev} activeOpacity={1} >
+                        <controls.AntDesign name='left' color={'grey'} size={28} />
+                    </controls.TouchableOpacity>
+                    <controls.TouchableOpacity onPress={handleNext} activeOpacity={1}>
+                        <controls.AntDesign name='right' color={'grey'} size={28} />
+                    </controls.TouchableOpacity>
+                </controls.View>
+            </controls.View>
+        </controls.View>
     )
 }
-
 export default Aboutusawardslider;
-
-const styles = StyleSheet.create({
+const styles = controls.StyleSheet.create({
     container: {
         flex: 1,
     },
@@ -141,7 +102,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginTop: 80,
         marginBottom: 50,
-        width: windowWidth - 44
+        width: controls.windowWidth - 44
     },
     navigationButtons: {
         flexDirection: 'row',
@@ -180,12 +141,11 @@ const styles = StyleSheet.create({
         color: 'black',
         fontWeight: '900',
         fontSize: 28,
-        lineHeight:42,
+        lineHeight: 42,
         textAlign: 'center'
     },
     headingtextcontainer: {
         marginTop: 42,
         marginBottom: 24
     }
-
 })

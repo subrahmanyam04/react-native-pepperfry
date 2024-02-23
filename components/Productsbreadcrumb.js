@@ -1,59 +1,32 @@
 import React from "react";
-import { ScrollView, StyleSheet, Text, View } from "react-native";
-import { Entypo } from '@expo/vector-icons'
-import { useRoute } from "@react-navigation/native";
+import controls from "./Imports";
 
 const Productsbreadcrumb = () => {
-
-    const route = useRoute();
-   
+    const route = controls.useRoute();
     const named = [
-        {
-            id: 1,
-            routename: "Home"
-        },
-        {
-            id: 2,
-            routename: route.params.secondname
-        },
-        {
-            id: 3,
-            routename: 'Sofas'
-        },
-        {
-            id: 4,
-            routename: route.params.screens
-        },
-        {
-            id: 5,
-            routename: "Chesterfield 3 Seater Sofas"
-        },
+        { id: 1, routename: "Home" },
+        { id: 2, routename: route.params.secondname },
+        { id: 3, routename: 'Sofas' },
+        { id: 4, routename: route.params.screens },
+        { id: 5, routename: "Chesterfield 3 Seater Sofas" },
     ]
-
     return (
-        <View style={styles.container}>
-            <View style={styles.innercontainer}>
-                <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+        <controls.View style={styles.container}>
+            <controls.View style={styles.innercontainer}>
+                <controls.ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                     {named.map((data, index) => (
-                        <View style={styles.rowcontainer} key={data.id}>
-
-                            <Text style={{ color: 'black', fontSize: 14, fontWeight: '500' }}>{data.routename}</Text>
-
-                            {data.id === 5 ? "" : <Entypo name='chevron-small-right' color={'grey'} size={18} />
-                            }
-                        </View>
-
+                        <controls.View style={styles.rowcontainer} key={data.id}>
+                            <controls.Text style={{ color: 'black', fontSize: 14, fontWeight: '500' }}>{data.routename}</controls.Text>
+                            {data.id === 5 ? "" : <controls.Entypo name='chevron-small-right' color={'grey'} size={18} />}
+                        </controls.View>
                     ))}
-
-                </ScrollView>
-            </View>
-        </View>
+                </controls.ScrollView>
+            </controls.View>
+        </controls.View>
     )
 }
-
 export default Productsbreadcrumb;
-
-const styles = StyleSheet.create({
+const styles = controls.StyleSheet.create({
     container: {
         flex: 1,
         borderBottomColor: 'lightgrey',
@@ -68,6 +41,5 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
         marginVertical: 6,
-
     }
 })

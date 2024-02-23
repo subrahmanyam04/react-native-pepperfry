@@ -1,9 +1,7 @@
 import React from "react";
-import { Image, Linking, StyleSheet, Text, View } from "react-native";
-
+import controls from "./Imports";
 
 const Aboutoursecret = () => {
-
     const secretdata = [
         {
             id: 1,
@@ -60,76 +58,53 @@ const Aboutoursecret = () => {
     ]
 
     return (
-
-
-        <View style={styles.container}>
-
-            <View style={styles.innercontainer}>
-                <View style={styles.headcontainer}>
-                    <Text style={styles.headtext}>OUR SECRET SAUCE</Text>
-                </View>
+        <controls.View style={styles.container}>
+            <controls.View style={styles.innercontainer}>
+                <controls.View style={styles.headcontainer}>
+                    <controls.Text style={styles.headtext}>OUR SECRET SAUCE</controls.Text>
+                </controls.View>
                 {secretdata.map((data) => (
+                    <controls.View style={styles.informationcontainer} key={data.id}>
+                        <controls.View style={styles.imgcontainer}>
+                            <controls.Image source={{ uri: data.imgurl }} alt="hbdf" style={styles.img} />
+                        </controls.View>
+                        <controls.View>
+                            <controls.Text style={styles.imgtitle}>{data.imgtitle}</controls.Text>
+                        </controls.View>
+                        <controls.View>
+                            <controls.Text style={styles.imgdescription}>{data.imgdes}</controls.Text>
+                        </controls.View>
+                        <controls.View>
+                            <controls.Text style={styles.imgparagraph}>{data.imgpara}</controls.Text>
+                        </controls.View>
+                        <controls.View>
+                            <controls.Text onPress={() => controls.Linking.openURL('https://www.pepperfry.com/')} style={styles.imgreadmorelink}>Read more</controls.Text>
+                        </controls.View>
 
-                    <View style={styles.informationcontainer} key={data.id}>
-                        <View style={styles.imgcontainer}>
-                            <Image source={{ uri: data.imgurl }} alt="hbdf" style={styles.img} />
-                        </View>
-                        <View>
-                            <Text style={styles.imgtitle}>{data.imgtitle}</Text>
-                        </View>
-                        <View>
-                            <Text style={styles.imgdescription}>{data.imgdes}</Text>
-                        </View>
-                        <View>
-                            <Text style={styles.imgparagraph}>
-                                {data.imgpara}
-                            </Text>
-                        </View>
-                        <View>
-                            <Text onPress={() => Linking.openURL('https://www.pepperfry.com/')} style={styles.imgreadmorelink}>
-                                Read more
-                            </Text>
-                        </View>
-
-                    </View>
-
-
-
+                    </controls.View>
                 ))}
-
-                {/* price and subcrips */}
-                <View style={styles.subcripcontainer}>
-
+                <controls.View style={styles.subcripcontainer}>
                     {prices.map((dam) => (
-                        <View style={styles.subcripinnercontainer} key={dam.id}>
-                            <View style={styles.subcripinnerrowcontainer}>
-                                <Text style={styles.numbertext}>{dam.rate1}</Text>
-                                <Text style={styles.numbersubtext}>{dam.reason1}</Text>
-                            </View>
-                            <View style={styles.subcripinnerrowcontainer}>
-                                <Text style={styles.numbertext}>{dam.rate2}</Text>
-                                <Text style={styles.numbersubtext}>{dam.reason2}</Text>
-                            </View>
-
-
-                        </View>
+                        <controls.View style={styles.subcripinnercontainer} key={dam.id}>
+                            <controls.View style={styles.subcripinnerrowcontainer}>
+                                <controls.Text style={styles.numbertext}>{dam.rate1}</controls.Text>
+                                <controls.Text style={styles.numbersubtext}>{dam.reason1}</controls.Text>
+                            </controls.View>
+                            <controls.View style={styles.subcripinnerrowcontainer}>
+                                <controls.Text style={styles.numbertext}>{dam.rate2}</controls.Text>
+                                <controls.Text style={styles.numbersubtext}>{dam.reason2}</controls.Text>
+                            </controls.View>
+                        </controls.View>
                     ))}
-
-
-
-                </View>
-
-
-            </View>
-
-        </View>
-
+                </controls.View>
+            </controls.View>
+        </controls.View>
     )
 }
 
 export default Aboutoursecret
 
-const styles = StyleSheet.create({
+const styles = controls.StyleSheet.create({
     container: {
         flex: 1,
         marginTop: 10
@@ -153,9 +128,6 @@ const styles = StyleSheet.create({
         color: '#000000',
         fontSize: 26,
         fontWeight: '900'
-    },
-    imgcontainer: {
-        //    marginTop:24
     },
     img: {
         height: 180,
@@ -196,23 +168,17 @@ const styles = StyleSheet.create({
     },
     subcripcontainer: {
         flex: 1,
-        // borderColor: 'black',
-        // borderWidth: 1,
         marginBottom: 10
     },
     subcripinnercontainer: {
         flex: 1,
         marginHorizontal: 15,
-        // borderColor: 'black',
-        // borderWidth: 1,
         flexDirection: 'row',
         justifyContent: 'space-between',
         marginTop:24
     },
     subcripinnerrowcontainer: {
         width: '46%',
-        // borderColor: 'black',
-        // borderWidth: 1
     },
     numbertext: {
         color: '#000000',
@@ -223,5 +189,4 @@ const styles = StyleSheet.create({
         color: '#000000',
         fontSize: 16
     }
-
 })

@@ -1,77 +1,37 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { Entypo, Ionicons } from '@expo/vector-icons'
+import controls from "./Imports";
 
 const Productsdropdownloop = () => {
     const [open, setopen] = useState(true)
-
-    const handlepress = () => {
-        setopen(!open);
-    }
-
+    const handlepress = () => { setopen(!open); }
     const information = [
-        {
-            id: 1,
-            title: 'Specifications'
-        },
-        {
-            id: 2,
-            title: 'Brand & Collection Overview'
-        },
-        {
-            id: 3,
-            title: "Care & Maintenance"
-        },
-        {
-            id: 4,
-            title: 'Seller'
-        },
-        {
-            id: 5,
-            title: 'Warrranty'
-        },
-        {
-            id: 6,
-            title: 'Customer Reviews & Images'
-        },
-        {
-            id: 7,
-            title: 'Q&A'
-        }
+        { id: 1, title: 'Specifications' },
+        { id: 2, title: 'Brand & Collection Overview' },
+        { id: 3, title: "Care & Maintenance" },
+        { id: 4, title: 'Seller' },
+        { id: 5, title: 'Warrranty' },
+        { id: 6, title: 'Customer Reviews & Images' },
+        { id: 7, title: 'Q&A' }
     ]
-
-
     return (
-        <View style={styles.container}>
-
+        <controls.View style={styles.container}>
             {information.map((data) => (
-                <View style={styles.innercontainer} key={data.id}>
-                    <View style={styles.rowcontainer}>
-                        <View>
-                            <Text style={{ color: 'black', fontWeight: "bold", fontSize: 15 }}>{data.title}</Text>
-                        </View>
-                        <TouchableOpacity activeOpacity={1} onPress={handlepress}>
-                            <View>
-                                <Entypo name='chevron-down' color={'grey'} size={22} />
-
-                            </View>
-                        </TouchableOpacity>
-                    </View>
-                    <View style={{ borderBottomColor: "#dbdcdc", borderBottomWidth: 2, marginTop: 16 }} />
-                </View>
+                <controls.View style={styles.innercontainer} key={data.id}>
+                    <controls.View style={styles.rowcontainer}>
+                        <controls.View><controls.Text style={{ color: 'black', fontWeight: "bold", fontSize: 15 }}>{data.title}</controls.Text></controls.View>
+                        <controls.TouchableOpacity activeOpacity={1} onPress={handlepress}>
+                            <controls.View><controls.Entypo name='chevron-down' color={'grey'} size={22} /></controls.View>
+                        </controls.TouchableOpacity>
+                    </controls.View>
+                    <controls.View style={{ borderBottomColor: "#dbdcdc", borderBottomWidth: 2, marginTop: 16 }} />
+                </controls.View>
             ))}
-
-
-            <View style={{ borderBottomColor: "#dbdcdc", borderBottomWidth: 8, marginTop: 18 }} />
-
-        </View>
-
+            <controls.View style={{ borderBottomColor: "#dbdcdc", borderBottomWidth: 8, marginTop: 18 }} />
+        </controls.View>
     )
 }
-
 export default Productsdropdownloop;
-
-const styles = StyleSheet.create({
+const styles = controls.StyleSheet.create({
     container: {
         flex: 1,
         marginBottom: 10

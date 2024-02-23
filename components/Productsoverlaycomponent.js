@@ -1,49 +1,30 @@
 import React from "react";
-import { FlatList, Image, Platform, StyleSheet, Text, View } from "react-native";
-import { windowWidth } from "../Util/Dimensions";
-import {  Ionicons, Feather, MaterialCommunityIcons } from '@expo/vector-icons'
-
+import controls from "./Imports";
 const Productsoverlaycomponent = () => {
     return(
          <>
-
-            {/* sharecontainer */}
-
-            <View style={styles.iconContainer}>
-                <View style={styles.iconBackgroundshare}>
-                    <Feather name="share-2" size={24} color="#181818" />
-                </View>
-            </View>
-
-
-            {/* wishlist container */}
-            <View style={styles.iconContainer}>
-                <View style={styles.iconBackground}>
-                    <Ionicons name="heart-outline" size={28} color="#181818" />
-                </View>
-            </View>
-
-            {/* similar products */}
-
-            {/* text container */}
-            <View style={styles.iconContainertext}>
-                <View style={styles.iconBackgroundtext}>
-                    <MaterialCommunityIcons name="cards-outline" size={28} color="#181818" style={{ marginHorizontal: 4 }} />
-                    <Text style={{ color: 'black', fontWeight: 'bold', fontSize: 14, marginHorizontal: 4 }}>View Similar Items</Text>
-                </View>
-            </View>
-
+            <controls.View style={styles.iconContainer}>
+                <controls.View style={styles.iconBackgroundshare}>
+                    <controls.Feather name="share-2" size={24} color="#181818" />
+                </controls.View>
+            </controls.View>
+            <controls.View style={styles.iconContainer}>
+                <controls.View style={styles.iconBackground}>
+                    <controls.Ionicons name="heart-outline" size={28} color="#181818" />
+                </controls.View>
+            </controls.View>
+            <controls.View style={styles.iconContainertext}>
+                <controls.View style={styles.iconBackgroundtext}>
+                    <controls.MaterialCommunityIcons name="cards-outline" size={28} color="#181818" style={{ marginHorizontal: 4 }} />
+                    <controls.Text style={{ color: 'black', fontWeight: 'bold', fontSize: 14, marginHorizontal: 4 }}>View Similar Items</controls.Text>
+                </controls.View>
+            </controls.View>
             </>
-
     )
 }
-
 export default Productsoverlaycomponent;
-
-
-const styles = StyleSheet.create({
+const styles = controls.StyleSheet.create({
     iconContainer: {
-      
         position: 'absolute',
         top: 0,
         bottom: 0,
@@ -53,22 +34,21 @@ const styles = StyleSheet.create({
         alignItems: 'flex-end'
     },
     iconBackground: {
-        top: Platform.OS === "android" ? 0 : 10,
-        bottom: Platform.OS === "android" ? 6 : 0,
+        top: controls.Platform.OS === "android" ? 0 : 10,
+        bottom: controls.Platform.OS === "android" ? 6 : 0,
         right: 12,
         backgroundColor: 'rgba(255, 255, 255, 0.8)',
         padding: 6,
         borderRadius: 100,
     },
     iconBackgroundshare: {
-        bottom: Platform.OS === "android" ? 60 : 48,
+        bottom: controls.Platform.OS === "android" ? 60 : 48,
         right: 12,
         backgroundColor: 'rgba(255, 255, 255, 0.5)',
         padding: 8,
         borderRadius: 100,
     },
     iconContainertext: {
-      
         position: 'absolute',
         top: 0,
         bottom: 0,
@@ -79,7 +59,7 @@ const styles = StyleSheet.create({
     },
     iconBackgroundtext: {
         padding: 8,
-        top: Platform.OS === "android" ? 220 : 140,
+        top: controls.Platform.OS === "android" ? 220 : 140,
         left: 10,
         borderRadius: 22,
         alignItems: 'center',

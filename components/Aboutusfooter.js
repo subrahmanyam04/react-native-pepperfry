@@ -1,7 +1,5 @@
 import React from "react";
-import { Linking, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { Entypo } from '@expo/vector-icons';
-
+import controls from "./Imports";
 const Aboutusfooter = () => {
     const headings = [
         {
@@ -15,7 +13,6 @@ const Aboutusfooter = () => {
             head2: 'INVESTOR RELATIONS'
         }
     ]
-
     const socialicons = [
         {
             id: 1,
@@ -45,76 +42,42 @@ const Aboutusfooter = () => {
         },
     ]
     return (
-        <View style={styles.container}>
-            <View style={styles.innercontainer}>
-                <View style={styles.headingtextcontainer}>
-                    <Text style={styles.headingtext}>
-                        QUICK LINKS
-                    </Text>
-                </View>
-
-                {/* heading titles */}
+        <controls.View style={styles.container}>
+            <controls.View style={styles.innercontainer}>
+                <controls.View style={styles.headingtextcontainer}>
+                    <controls.Text style={styles.headingtext}>QUICK LINKS</controls.Text>
+                </controls.View>
                 {headings.map((titles) => (
-                    <View style={styles.headingrowcontainers} key={titles.id}>
-
-                        <View style={styles.headingrowcontainerinner}>
-                            <Text style={styles.headingrowcontainerinnertext}>{titles.head1}</Text>
-                        </View>
-                        <View style={styles.headingrowcontainerinner}>
-                            <Text style={styles.headingrowcontainerinnertext}>{titles.head2}</Text>
-                        </View>
-
-                    </View>
-
+                    <controls.View style={styles.headingrowcontainers} key={titles.id}>
+                        <controls.View style={styles.headingrowcontainerinner}>
+                            <controls.Text style={styles.headingrowcontainerinnertext}>{titles.head1}</controls.Text>
+                        </controls.View>
+                        <controls.View style={styles.headingrowcontainerinner}>
+                            <controls.Text style={styles.headingrowcontainerinnertext}>{titles.head2}</controls.Text>
+                        </controls.View>
+                    </controls.View>
                 ))}
-                {/* heading titles */}
-
-                <View style={styles.socialcontainer}>
-                    <View>
-                        <Text style={styles.liketext} >JOIN OUR COMMUNITY</Text>
-                    </View>
-
-                    {/* social media icons loop */}
-                    <View style={styles.insideinnercontainer}>
+                <controls.View style={styles.socialcontainer}>
+                    <controls.View><controls.Text style={styles.liketext}>JOIN OUR COMMUNITY</controls.Text></controls.View>
+                    <controls.View style={styles.insideinnercontainer}>
                         {socialicons.map((media) => (
-
-                            <TouchableOpacity key={media.id} style={styles.iconspaces} onPress={() => Linking.openURL(media.url)}>
-                                <Entypo name={media.iconname} size={36} color={media.color} />
-                            </TouchableOpacity>
-
+                            <controls.TouchableOpacity key={media.id} style={styles.iconspaces} onPress={() => controls.Linking.openURL(media.url)}>
+                                <controls.Entypo name={media.iconname} size={36} color={media.color} />
+                            </controls.TouchableOpacity>
                         ))}
-                    </View>
-                    {/* social media icons loop ending */}
-                </View>
-
-                <View style={styles.policycontainer}>
-                    <View>
-                        <Text style={styles.policytext}>
-                            PRIVACY POLICY
-                        </Text>
-                    </View>
-                    <View>
-                        <Text style={styles.policytext}>
-                            TERMS OF USE
-                        </Text>
-                    </View>
-                    <View>
-                        <Text style={styles.policytext}>
-                            DATA & SECURITY
-                        </Text>
-                    </View>
-
-                </View>
-
-
-            </View>
-        </View>
+                    </controls.View>
+                </controls.View>
+                <controls.View style={styles.policycontainer}>
+                    <controls.View><controls.Text style={styles.policytext}>PRIVACY POLICY</controls.Text></controls.View>
+                    <controls.View><controls.Text style={styles.policytext}>TERMS OF USE</controls.Text></controls.View>
+                    <controls.View><controls.Text style={styles.policytext}>DATA & SECURITY</controls.Text></controls.View>
+                </controls.View>
+            </controls.View>
+        </controls.View>
     )
 }
-
 export default Aboutusfooter;
-
-const styles = StyleSheet.create({
+const styles = controls.StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#F0F8FF',
@@ -124,7 +87,6 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'column',
         marginHorizontal: 22
-
     },
     headingrowcontainers: {
         flex: 1,

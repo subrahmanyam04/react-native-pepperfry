@@ -1,39 +1,15 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Signupmodalform from "../components/Signupmodalform";
-// import { Settoken } from "../Redux/Actions/Tokenaction";
-import { connect } from "react-redux";
 import Myaccountlayout from "../components/Myaccountlayout";
-import { useNavigation } from "@react-navigation/native";
+import controls from "../components/Imports";
 
-const Myaccount = ({token, route}) => {
-
-    const navigation = useNavigation();
-
-    
- 
-    console.log('token in my account', token)
- 
+const Myaccount = ({ token }) => {
     return (
-        <>
-           
-            {token ?  (<Myaccountlayout/>) : (<Signupmodalform />)}
-
-        </>
-
+        <controls.SafeAreaView>
+            {token ? (<Myaccountlayout />) : (<Signupmodalform />)}
+        </controls.SafeAreaView>
     )
 }
 
-const mapStateToProps = (state) => ({
-
-    // sliderdata: state.Sliderreducer.sliderdata,
-    // card1data: state.Card1reducer.card1data,
-   token : state.Tokenreducer.token
-    
-    // selectedAboutCard: state.Reducer1.selectedAboutCard
-    
-});
-
-
-  
-
-  export default connect(mapStateToProps)(Myaccount);
+const mapStateToProps = (state) => ({ token: state.Tokenreducer.token });
+export default controls.connect(mapStateToProps)(Myaccount);

@@ -1,35 +1,22 @@
 import React from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { Ionicons } from '@expo/vector-icons'
-import { useNavigation } from "@react-navigation/native";
+import controls from "./Imports";
 
 const Productsbuttons = () => {
-    const navigation = useNavigation();
     return (
-        <View style={styles.footer}>
-            <View style={styles.conatiner}>
-
-                <View style={styles.rowcontainer}>
-                    <Text style={{color:'#ff4500',fontWeight:'bold',fontSize:18}}>
-                        ADD TO CART
-                    </Text>
-                </View>
-
-                <View style={[styles.rowcontainer,{backgroundColor:'#ff4500'}]}>
-                    <Text style={{color:'white',fontWeight:'bold',fontSize:18}}>
-                        BUY NOW
-                    </Text>
-                </View>
-
-
-            </View>
-        </View>
+        <controls.View style={styles.footer}>
+            <controls.View style={styles.conatiner}>
+                <controls.View style={styles.rowcontainer}>
+                    <controls.Text style={{color:'#ff4500',fontWeight:'bold',fontSize:18}}>ADD TO CART</controls.Text>
+                </controls.View>
+                <controls.View style={[styles.rowcontainer,{backgroundColor:'#ff4500'}]}>
+                    <controls.Text style={{color:'white',fontWeight:'bold',fontSize:18}}>BUY NOW</controls.Text>
+                </controls.View>
+            </controls.View>
+        </controls.View>
     )
 }
-
 export default Productsbuttons;
-
-const styles = StyleSheet.create({
+const styles = controls.StyleSheet.create({
     footer: {
         position: "absolute",
         bottom: 44,
@@ -37,14 +24,10 @@ const styles = StyleSheet.create({
         right: 0,
         padding: 2,
         backgroundColor: "white",
-    
     },
-
     conatiner: {
         flex: 1,
         flexDirection: 'row',
-        // borderColor: 'black',
-        // borderWidth: 1,
         marginHorizontal:2,
         justifyContent:'space-between'
     },
@@ -59,7 +42,4 @@ const styles = StyleSheet.create({
         marginTop:8,
         marginBottom:10
     }
-
-
-
 });

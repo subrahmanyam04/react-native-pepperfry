@@ -1,5 +1,4 @@
 import React from "react";
-import { ScrollView, Text } from "react-native";
 import Furniturecatgeory from "./Furniturecatgeory";
 import Sofasandseatings from "./Sofasandseatings";
 import Mattresses from "./Mattresses";
@@ -10,10 +9,10 @@ import Lampsandlighting from "./Lampsandlighting";
 import Homeutility from "./Homeutility";
 import Appliances from "./Appliances";
 import Modular from "./Modular";
-
+import controls from "./Imports";
 const Catgeorylayout = () => {
     return (
-        <ScrollView>
+        <controls.ScrollView>
         <Furniturecatgeory />
         <Sofasandseatings/>
         <Mattresses/>
@@ -24,8 +23,7 @@ const Catgeorylayout = () => {
         <Homeutility/>
         <Appliances/>
         <Modular/>
-        </ScrollView>
+        </controls.ScrollView>
     )
 }
-
 export default Catgeorylayout

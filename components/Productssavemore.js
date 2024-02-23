@@ -1,98 +1,52 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { Entypo, Ionicons } from '@expo/vector-icons'
+import controls from "./Imports";
 const Productssavemore = () => {
     const [open, setopen] = useState(true)
-
-    const handlepress = () => {
-        setopen(!open);
-    }
-
+    const handlepress = () => { setopen(!open); }
     const information = [
-        {
-            title: 'Get Additional Rs.1,100/- Off On ICICI Credit Card, Credit & Debit Card EMI and Internet Banking Transactions',
-            descrip: 'Apply Coupon',
-            code: ' ICICIFEST10 ',
-            symbol: '|',
-            descripcon: ' Minimum Order Value Is 10,000/-',
-            id:1
-
-        },
-        {
-            title: 'Get Additional Rs.1,100/- Off On ICICI Credit Card, Credit & Debit Card EMI and Internet Banking Transactions',
-            descrip: 'Apply Coupon',
-            code: ' ICICIFEST10 ',
-            symbol: '|',
-            descripcon: ' Minimum Order Value Is 10,000/-',
-            id:2
-
-        },
+        { title: 'Get Additional Rs.1,100/- Off On ICICI Credit Card, Credit & Debit Card EMI and Internet Banking Transactions', descrip: 'Apply Coupon', code: ' ICICIFEST10 ', symbol: '|', descripcon: ' Minimum Order Value Is 10,000/-', id: 1 },
+        { title: 'Get Additional Rs.1,100/- Off On ICICI Credit Card, Credit & Debit Card EMI and Internet Banking Transactions', descrip: 'Apply Coupon', code: ' ICICIFEST10 ', symbol: '|', descripcon: ' Minimum Order Value Is 10,000/-', id: 2 },
     ]
     return (
-        <View style={styles.container}>
-            <View style={styles.innercontainer}>
-
-                <View style={styles.rowcontainer}>
-                    <View>
-                        <Text style={{ color: 'black', fontWeight: "bold", fontSize: 15 }}>Save More With These Great Deals!</Text>
-                    </View>
-                    <TouchableOpacity activeOpacity={1} onPress={handlepress}>
-                        <View>
-                            {open ? <Entypo name='chevron-up' color={'grey'} size={22} /> : <Entypo name='chevron-down' color={'grey'} size={22} />}
-
-                        </View>
-                    </TouchableOpacity>
-                </View>
-
-
+        <controls.View style={styles.container}>
+            <controls.View style={styles.innercontainer}>
+                <controls.View style={styles.rowcontainer}>
+                    <controls.View><controls.Text style={{ color: 'black', fontWeight: "bold", fontSize: 15 }}>Save More With These Great Deals!</controls.Text></controls.View>
+                    <controls.TouchableOpacity activeOpacity={1} onPress={handlepress}>
+                        <controls.View>
+                            {open ? <controls.Entypo name='chevron-up' color={'grey'} size={22} /> : <controls.Entypo name='chevron-down' color={'grey'} size={22} />}
+                        </controls.View>
+                    </controls.TouchableOpacity>
+                </controls.View>
                 {open ? (
-                    <View style={styles.opencontainer}>
-                        <View>
-                            <Text>Use the Coupon during Checkout</Text>
-                        </View>
-
-                        <View>
-                            <Text style={styles.timertext}>
-                                <Ionicons name="timer-outline" size={15} color="#D8232A" /> Ending in 14h : 12m : 30s
-                            </Text>
-                        </View>
-
+                    <controls.View style={styles.opencontainer}>
+                        <controls.View><controls.Text>Use the Coupon during Checkout</controls.Text></controls.View>
+                        <controls.View>
+                            <controls.Text style={styles.timertext}><controls.Ionicons name="timer-outline" size={15} color="#D8232A" /> Ending in 14h : 12m : 30s</controls.Text>
+                        </controls.View>
                         {information.map((data) => (
-
-                            <View style={{ flex: 1, flexDirection: 'column', marginTop: 8 }} key={data.id}>
-                                <View>
-                                    <Text style={{ color: 'black', fontWeight: '900', fontSize: 14 }}>{data.title}</Text>
-                                </View>
-
-                                <View>
-                                    <Text style={{ color: '#484a48', fontWeight: 'bold', fontSize: 12 }}>{data.descrip}
-                                        <Text style={{ color: 'black', fontWeight: '500', fontSize: 14 }}>{data.code}</Text><Text>{data.symbol}</Text><Text>{data.descripcon}</Text>
-                                    </Text>
-                                </View>
-
-                                <View style={styles.dividerdotted} />
-                            </View>
-
+                            <controls.View style={{ flex: 1, flexDirection: 'column', marginTop: 8 }} key={data.id}>
+                                <controls.View><controls.Text style={{ color: 'black', fontWeight: '900', fontSize: 14 }}>{data.title}</controls.Text></controls.View>
+                                <controls.View>
+                                    <controls.Text style={{ color: '#484a48', fontWeight: 'bold', fontSize: 12 }}>{data.descrip}
+                                        <controls.Text style={{ color: 'black', fontWeight: '500', fontSize: 14 }}>{data.code}</controls.Text><controls.Text>{data.symbol}</controls.Text><controls.Text>{data.descripcon}</controls.Text>
+                                    </controls.Text>
+                                </controls.View>
+                                <controls.View style={styles.dividerdotted} />
+                            </controls.View>
                         ))}
-
-                        <View style={{ marginVertical: 4 }}>
-                            <Text style={{ color: "brown", fontWeight: '500', fontSize: 13 }}>
-                                See All {'(8)'}
-                            </Text>
-                        </View>
-
-                    </View>
+                        <controls.View style={{ marginVertical: 4 }}>
+                            <controls.Text style={{ color: "brown", fontWeight: '500', fontSize: 13 }}>See All {'(8)'}</controls.Text>
+                        </controls.View>
+                    </controls.View>
                 ) : ("")}
-            </View>
-            <View style={{ borderBottomColor: "#dbdcdc", borderBottomWidth: 8 }} />
-        </View>
-
+            </controls.View>
+            <controls.View style={{ borderBottomColor: "#dbdcdc", borderBottomWidth: 8 }} />
+        </controls.View>
     )
 }
-
 export default Productssavemore;
-
-const styles = StyleSheet.create({
+const styles = controls.StyleSheet.create({
     container: {
         flex: 1,
         marginBottom: 10
@@ -100,7 +54,7 @@ const styles = StyleSheet.create({
     innercontainer: {
         flex: 1,
         marginHorizontal: 8,
-        marginBottom:10
+        marginBottom: 10
     },
     rowcontainer: {
         flex: 1,
@@ -116,7 +70,6 @@ const styles = StyleSheet.create({
         fontSize: 12.5,
         color: '#D8232A',
         marginTop: 2,
-
     },
     dividerdotted: {
         borderColor: 'lightgrey',

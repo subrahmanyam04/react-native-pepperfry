@@ -1,8 +1,6 @@
 import React from "react";
-import { Image, StyleSheet, Text, View } from "react-native";
-
+import controls from "./Imports";
 const Aboutusinthenews = () => {
-
     const car = [
         {
             id: 1,
@@ -26,72 +24,39 @@ const Aboutusinthenews = () => {
             information: '“When a player like this comes in, we’re happy; we are all collectively going to organise the unorganised sector,” explains Murty.',
         },
     ]
-
-
-
-
     return (
-        <View style={styles.container}>
-            <View style={styles.innercontainer}>
-
-                <View style={{marginTop:15,marginBottom:20}}>
-                      <Text style={{color:'black',fontSize:26,fontWeight:'900',textAlign:'center'}}>
-                        IN THE NEWS
-                      </Text>
-                </View>
-
+        <controls.View style={styles.container}>
+            <controls.View style={styles.innercontainer}>
+                <controls.View style={{marginTop:15,marginBottom:20}}>
+                      <controls.Text style={{color:'black',fontSize:26,fontWeight:'900',textAlign:'center'}}>IN THE NEWS</controls.Text>
+                </controls.View>
                 {car.map((user) => (
-
-                    <View style={styles.subcontainer} key={user.id}>
-                        <View style={{ marginBottom: 2 }}>
-                            <Image source={{ uri: user.url }} style={{ width: '100%', height: 228, resizeMode: 'contain' }} />
-                        </View>
-
-
-                        <View style={styles.subinnercontainer}>
-
-                            <View style={{ marginVertical: 12 }}>
-                                <Text style={{ textAlign: 'right', color: 'grey', fontSize: 16, fontWeight: '400' }}>
-                                    {user.date}
-                                </Text>
-                            </View>
-
-                            <View>
-                                <Text style={{ fontWeight: '500', fontSize: 20, color: 'black', textAlign: 'justify', lineHeight: 26 }}>
-                                    {user.title}
-                                </Text>
-                            </View>
-
-                            <View style={{ marginTop: 8 }}>
-                                <Text style={{ fontSize: 18, color: 'black', fontWeight: '300', lineHeight: 24, paddingHorizontal: 2 }}>
-                                    {user.information}
-                                </Text>
-                            </View>
-
-                            <View style={{ marginBottom: 32 }}>
-                                <Text style={styles.readmorelink}>
-                                    Read more
-                                </Text>
-                            </View>
-
-                        </View>
-
-
-                    </View>
-
-
+                    <controls.View style={styles.subcontainer} key={user.id}>
+                        <controls.View style={{ marginBottom: 2 }}>
+                            <controls.Image source={{ uri: user.url }} style={{ width: '100%', height: 228, resizeMode: 'contain' }} />
+                        </controls.View>
+                        <controls.View style={styles.subinnercontainer}>
+                            <controls.View style={{ marginVertical: 12 }}>
+                                <controls.Text style={{ textAlign: 'right', color: 'grey', fontSize: 16, fontWeight: '400' }}>{user.date}</controls.Text>
+                            </controls.View>
+                            <controls.View>
+                                <controls.Text style={{ fontWeight: '500', fontSize: 20, color: 'black', textAlign: 'justify', lineHeight: 26 }}>{user.title}</controls.Text>
+                            </controls.View>
+                            <controls.View style={{ marginTop: 8 }}>
+                                <controls.Text style={{ fontSize: 18, color: 'black', fontWeight: '300', lineHeight: 24, paddingHorizontal: 2 }}>{user.information}</controls.Text>
+                            </controls.View>
+                            <controls.View style={{ marginBottom: 32 }}>
+                                <controls.Text style={styles.readmorelink}>Read more</controls.Text>
+                            </controls.View>
+                        </controls.View>
+                    </controls.View>
                 ))}
-
-
-            </View>
-
-        </View>
+            </controls.View>
+        </controls.View>
     )
 }
-
 export default Aboutusinthenews;
-
-const styles = StyleSheet.create({
+const styles = controls.StyleSheet.create({
     container: {
         flex: 1,
         marginTop: 20
@@ -99,9 +64,6 @@ const styles = StyleSheet.create({
     innercontainer: {
         flex: 1,
         marginHorizontal: 20,
-
-        // borderColor:'black',
-        // borderWidth:2
     },
     subcontainer: {
         flex: 1,

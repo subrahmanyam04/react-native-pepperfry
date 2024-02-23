@@ -1,9 +1,7 @@
-import { Text } from "react-native"
-
+import controls from "../components/Imports";
 const Store = () => {
     return(
-        <Text>This is Store page</Text>
+        <controls.Text>This is Store page</controls.Text>
     )
 }
-
 export default Store;

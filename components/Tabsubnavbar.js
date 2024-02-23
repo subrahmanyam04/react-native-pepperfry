@@ -1,59 +1,31 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import { Ionicons, MaterialCommunityIcons, Entypo } from '@expo/vector-icons'
+import controls from "./Imports";
 
 const Tabsubnavbar = () => {
     return (
-        <>
-            <View style={styles.container}>
-                <View style={styles.innercontainer}>
-
-                    <View style={styles.rowcontainer}>
-                        <View>
-                            <Text style={styles.fontstyle}>
-                                Categories <Ionicons name='chevron-up' color={'black'} size={14} />
-                            </Text>
-                        </View>
-
-
-                    </View>
-
-                    <View style={styles.rowcontainer}>
-                        <Text style={styles.fontstyle}>
-                            <MaterialCommunityIcons name='arrow-up-down' color={'black'} size={14} /> Sort By
-                        </Text>
-                        <Text style={styles.subtext}>Relevance</Text>
-                    </View>
-
-                    <View style={styles.rowcontainer}>
-                        <Text style={styles.fontstyle}>
-                            <Entypo name='sound-mix' color={'black'} size={14} /> Filter
-                        </Text>
-                        <Text style={styles.subtext}>0 Filters Applied</Text>
-                    </View>
-
-                </View>
-
-
-
-            </View>
-
-
-        </>
-
+        <controls.View style={styles.container}>
+            <controls.View style={styles.innercontainer}>
+                <controls.View style={styles.rowcontainer}>
+                    <controls.View><controls.Text style={styles.fontstyle}>Categories <controls.Ionicons name='chevron-up' color={'black'} size={14} /></controls.Text></controls.View>
+                </controls.View>
+                <controls.View style={styles.rowcontainer}>
+                    <controls.Text style={styles.fontstyle}><controls.MaterialCommunityIcons name='arrow-up-down' color={'black'} size={14} /> Sort By</controls.Text><controls.Text style={styles.subtext}>Relevance</controls.Text>
+                </controls.View>
+                <controls.View style={styles.rowcontainer}>
+                    <controls.Text style={styles.fontstyle}><controls.Entypo name='sound-mix' color={'black'} size={14} /> Filter</controls.Text><controls.Text style={styles.subtext}>0 Filters Applied</controls.Text>
+                </controls.View>
+            </controls.View>
+        </controls.View>
     )
 }
-
 export default Tabsubnavbar;
-
-const styles = StyleSheet.create({
+const styles = controls.StyleSheet.create({
     container: {
         flex: 1
     },
     innercontainer: {
         flex: 1,
         flexDirection: 'row',
-
         borderBottomColor: 'lightgrey',
         borderBottomWidth: 1
     },
@@ -68,7 +40,6 @@ const styles = StyleSheet.create({
         padding: 6,
     },
     fontstyle: {
-
         fontWeight: '500',
         color: '#363636',
         fontSize: 14
