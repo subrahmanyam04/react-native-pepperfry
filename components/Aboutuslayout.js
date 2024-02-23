@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Aboutushead from "./Aboutushead";
 import Aboutourbeliefs from "./Aboutourbeliefs";
 import Aboutourstory from "./Aboutourstory";
@@ -9,9 +9,7 @@ import Aboutinstagram from "./Aboutusinstagram";
 import Aboutusawardslider from "./Aboutusawardslider";
 import Aboutusfooter from "./Aboutusfooter";
 import Aboutusinthenews from "./Aboutusinthenews";
-
 const Aboutuslayout = () => {
-
     return(
         <>
         <Aboutushead/>
@@ -24,9 +22,7 @@ const Aboutuslayout = () => {
         <Aboutusinthenews/>
         <Aboutusawardslider/>
         <Aboutusfooter/>
-       
         </>
     )
 }
-
 export default Aboutuslayout;

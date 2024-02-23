@@ -1,51 +1,38 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import { Ionicons } from '@expo/vector-icons'
-
+import controls from "./Imports";
 const Homestatictime = () => {
     return (
-        <View style={styles.container}>
-            <View style={styles.verfication}>
-                <Text style={styles.text1}>Shop What The Fry Deals</Text>
-            </View>
-
-            <View style={styles.verfication}> 
-                <Text style={styles.timertext}>
-                <Ionicons name="timer-outline" size={15} color="#D8232A" /> Ending in 14h : 12m : 30s
-                </Text>
-            </View>
-            
-        </View>
+        <controls.View style={styles.container}>
+            <controls.View style={styles.verfication}>
+                <controls.Text style={styles.text1}>Shop What The Fry Deals</controls.Text>
+            </controls.View>
+            <controls.View style={styles.verfication}>
+                <controls.Text style={styles.timertext}><controls.Ionicons name="timer-outline" size={15} color="#D8232A" /> Ending in 14h : 12m : 30s</controls.Text>
+            </controls.View>
+        </controls.View>
     )
 }
-
 export default Homestatictime;
-
-
-const styles = StyleSheet.create({
+const styles = controls.StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: "row",
-        marginTop:25,
-        marginHorizontal:1
-        // justifyContent:'space-between'
+        marginTop: 25,
+        marginHorizontal: 1
     },
     verfication: {
-        // borderWidth: 1,
-        // borderColor: 'black',
-        marginHorizontal:3.5
+        marginHorizontal: 3.5
     },
-    text1:{
-        // fontFamily:"Poppins,sans-serif",
-        fontWeight:'bold',
+    text1: {
+        fontWeight: 'bold',
         fontSize: 17,
-        color:'#8b4513'
+        color: '#8b4513'
     },
-    timertext:{
+    timertext: {
         fontWeight: 'bold',
         fontSize: 14.5,
-        color:'#D8232A',
-        marginTop:4.5
+        color: '#D8232A',
+        marginTop: 4.5
     }
 })
 

@@ -1,17 +1,15 @@
 import React from "react";
-import { ScrollView } from "react-native";
 import Myaccountprofile from "./Myaccountprofile";
 import Logout from "./Logout";
 import Myaccountcard from "./Myaccountcard";
-
+import controls from "./Imports";
 const Myaccountlayout = () => {
     return(
-        <ScrollView>
+        <controls.ScrollView showsVerticalScrollIndicator={false} bounces={false} alwaysBounceVertical={false}>
             <Myaccountprofile/>
             <Myaccountcard/>
             <Logout/>
-        </ScrollView>
+        </controls.ScrollView>
     )
 }
-
 export default Myaccountlayout;

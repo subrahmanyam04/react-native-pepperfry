@@ -2,30 +2,50 @@
   "expo": {
     "name": "Pepperfry",
     "slug": "Pepperfry",
+    "plugins": [
+      "@react-native-google-signin/google-signin",
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "deploymentTarget": "14.0",
+            "useFrameworks" : "static"
+          }
+        }
+      ]
+    ],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/1397.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
+      "image": "./assets/dribbbbleicon.png",
+      "resizeMode": "cover",
       "backgroundColor": "#ffffff"
     },
-    
     "assetBundlePatterns": [
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.subbu123.PepperfryApp"
     },
     "android": {
+      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/1397.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.subbu_123.PepperfryApp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "9d5f4c23-50be-44fa-a6ea-a06788fa7524"
+      }
+    },
+    "owner": "subbu_123"
   }
 }

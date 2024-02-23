@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>518917201034-h660gtpi41d54bmo1crsa96ec8qh68ar.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.518917201034-h660gtpi41d54bmo1crsa96ec8qh68ar</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>518917201034-60p0ni6rsn43ng7h8l1aggk42tllf01c.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDRVcV6_xZ_EvdQ2SSWzxLyn84XfuGezv8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>518917201034</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.subbu123.PepperfryApp</string>
+	<key>PROJECT_ID</key>
+	<string>pepperfry-a4a65</string>
+	<key>STORAGE_BUCKET</key>
+	<string>pepperfry-a4a65.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:518917201034:ios:da190f15ba26a6aafc6173</string>
+	<key>DATABASE_URL</key>
+	<string>https://pepperfry-a4a65-default-rtdb.firebaseio.com</string>
+</dict>
+</plist>

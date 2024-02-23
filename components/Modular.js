@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     },
     subcontainer: {
         flexDirection: 'row',
-        marginTop: 15,
+        marginTop: 12,
         // marginHorizontal: 10,
         marginBottom: 12
     },
@@ -90,18 +90,6 @@ const styles = StyleSheet.create({
 });
 
 const Modular = () => {
-    // const [isContainer2Visible, setContainer2Visible] = useState(false);
-    // const [isnestedcontainer1Visible, setnestedcontainer1Visible] = useState(false);
-    // const [isnestedcontainer2Visible, setnestedcontainer2Visible] = useState(false);
-
-    // // main container   
-    // const handleContainerClick = () => {
-    //     setContainer2Visible(!isContainer2Visible);
-      
-    // };
-
-  
-
 
     return (
         <>
@@ -121,17 +109,14 @@ const Modular = () => {
                             <View>
                                 <Text style={styles.headingtext}>Modular</Text>
                             </View>
-
-                           
-
                         </View>
-
                     </View>
                 </TouchableOpacity>
 
 
 
-           
+           {/* <View style={{ borderBottomColor: 'lightgrey',
+        borderBottomWidth: 1}}/> */}
 
             </View>
 

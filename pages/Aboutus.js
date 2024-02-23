@@ -1,28 +1,15 @@
-import { ScrollView, StyleSheet, Text, View } from "react-native"
-
 import Aboutuslayout from "../components/Aboutuslayout";
+import controls from "../components/Imports";
 
 const Aboutus = () => {
-    return(
-        <>
-        <View style={styles.topBorder}/>
-        <ScrollView bounces={false} alwaysBounceHorizontal={false} alwaysBounceVertical={false} style={styles.scrollbackground}>
-
-        <Aboutuslayout/>
-
-        </ScrollView>
-        </>
+    return (
+        <controls.SafeAreaView>
+            <controls.PagesTopborder />
+            <controls.ScrollView bounces={false} alwaysBounceHorizontal={false} alwaysBounceVertical={false} style={styles.scrollbackground}>
+                <Aboutuslayout />
+            </controls.ScrollView>
+        </controls.SafeAreaView>
     )
 }
-
 export default Aboutus;
-
-const styles =  StyleSheet.create({
-    scrollbackground:{
-        backgroundColor:'white'
-    },
-    topBorder: {
-        borderTopWidth: 1,
-        borderTopColor: 'lightgrey',
-    },
-})
+const styles = controls.StyleSheet.create({ scrollbackground: { backgroundColor: 'white' }, })

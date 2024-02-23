@@ -1,115 +1,54 @@
-import React from "react";
-import { Image, StyleSheet, Text, View } from "react-native";
-import { Ionicons } from '@expo/vector-icons'
-const Tabcard2 = () => {
+import React, { useEffect } from "react";
+import Tabcard23infor from "./Tabcard23infor";
+import { Getcard2Data } from "../Redux/Api/Getcard2data";
+import { setCard2data } from "../Redux/Actions/Card2action";
+import controls from "./Imports";
+
+const Tabcard2 = ({ card2data, setCard2data }) => {
+    const getData = async () => {
+        try {
+            const students = await Getcard2Data();
+            setCard2data(students);
+        } catch (error) {
+            console.error('An error occurred:', error);
+        }
+    };
+    useEffect(() => { getData(); }, []);
+    const route = controls.useRoute();
+    const routename = route.params.screen
+    let jaggu = card2data.filter(i => i.status === routename)
     return (
-        <>
-            <View style={styles.container}>
-                <View style={styles.innercontainer}>
 
-                    <View style={styles.rowcontainer}>
-
-                        <View style={styles.rowinnercontainer}>
-                            {/* image here is */}
-                            <View>
-                                <Image
-                                    source={{ uri: 'https://ii1.pepperfry.com/media/catalog/product/d/a/494x544/daroo-3-seater-sofa-in-camel-beige-by-febonic-daroo-3-seater-sofa-in-camel-beige-by-febonic-o8dhfm.jpg' }}
-                                    style={styles.image}
-                                />
-                                <View style={styles.iconcontainer}>
-                                    <View style={styles.iconbackground}>
-                                        <Ionicons name="heart-outline" size={20} color="#696969" />
-                                    </View>
-                                </View>
-                            </View>
-
-                            {/* details of that image */}
-
-                            {/* icon  with multicolor */}
-
-                            <View style={{ marginTop: 8, flex: 1, flexDirection: 'row' }}>
-                                <View style={{ borderColor: 'grey', borderWidth: 1, padding: 3, borderRadius: 30, marginHorizontal: 10 }}>
-                                    <Image source={{ uri: "https://cdn.pixabay.com/photo/2013/07/12/19/20/rainbow-colors-154569_1280.png" }}
-                                        style={{ height: 14, width: 14, resizeMode: 'contain' }}
-                                    />
-                                </View>
-                                <View>
-                                    <Text style={{ color: "#242424", fontWeight: '800', fontSize: 12, marginTop: 1 }}>+4 more colors</Text>
-                                </View>
-                            </View>
-                        
-
-                        <View style={{flex:1,flexDirection:'column',marginHorizontal:2}}>
-
-                            <View>
-                                <Text>
-                                Baley 3 Seater Sofa In Lama Black Colour 
-                                </Text>
-                            </View>
-
-                            <View>
-                                <Text>
-                                Trevi Furniture  
-                                </Text>
-                            </View>
-
-                            <View>
-                                <Text>
-                                stars 
-                                </Text>
-                            </View>
-
-                            <View>
-                                <Text>
-                                Today's Deal 
-                                </Text>
-                            </View>
-
-                            <View>
-                                <Text>
-                                ₹18,199
-                                </Text>
-                            </View>
-
-                            <View>
-                                <Text>
-                                YouSave
-                                </Text>
-                            </View>
-
-                            <View>
-                                <Text>
-                                Earn
-                                </Text>
-                            </View>
-
-                        </View>
-
-
-
-
-
-                        </View>
-                    </View>
-
-
-
-
-
-
-                </View>
-
-            </View>
-        </>
+        <controls.TouchableOpacity activeOpacity={1} >
+            <controls.View style={styles.container}>
+                <controls.View style={styles.innercontainer}>
+                    {jaggu.map((card2) => (
+                        <controls.View style={styles.rowcontainer} key={card2.id}>
+                            <controls.View style={styles.rowinnercontainer} >
+                                <controls.View>
+                                    <controls.Image  source={{ uri: card2.imgurl }} style={styles.image} />
+                                    <controls.View style={styles.iconcontainer}>
+                                        <controls.View style={styles.iconbackground}>
+                                            <controls.Ionicons name="heart-outline" size={20} color="#696969" />
+                                        </controls.View>
+                                    </controls.View>
+                                </controls.View>
+                                <Tabcard23infor />
+                            </controls.View>
+                        </controls.View>
+                    ))}
+                </controls.View>
+            </controls.View>
+        </controls.TouchableOpacity>
     )
 }
-
-export default Tabcard2;
-
-const styles = StyleSheet.create({
+const mapStateToProps = (state) => ({ card2data: state.Card2reducer.card2data, });
+const mapDispatchToProps = { setCard2data };
+export default controls.connect(mapStateToProps, mapDispatchToProps)(Tabcard2);
+const styles = controls.StyleSheet.create({
     container: {
         flex: 1,
-        marginBottom:60
+        marginBottom: 4
     },
     innercontainer: {
         flex: 1,
@@ -118,8 +57,6 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
     },
     rowcontainer: {
-        borderColor: 'black',
-        borderWidth: 1,
         width: '49%',
         marginTop: 10
     },
@@ -137,15 +74,15 @@ const styles = StyleSheet.create({
         alignItems: 'flex-end'
     },
     iconbackground: {
-        backgroundColor: "rgba(255, 255, 255, 0.4)",
+        backgroundColor: "rgba(255, 255, 255, 0.7)",
         top: 14,
         right: 6,
         padding: 5,
         borderRadius: 30
     },
     image: {
-        width: 'auto',
-        height: 210,
+        width: '100%',
+        height: 212,
         resizeMode: 'contain'
     }
 })

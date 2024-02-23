@@ -1,39 +1,22 @@
 import React from "react";
-import { Image, StyleSheet, Text, View } from "react-native";
-
+import controls from "./Imports";
 
 const Aboutourstory = () => {
-
-
     return (
-
-
-        <View style={styles.container}>
-
-            <View style={styles.innercontainer}>
-                <View style={styles.headcontainer}>
-                    <Text style={styles.headtext}>OUR STORY</Text>
-                </View>
-
-
-                <View>
-                    <Image source={{ uri: 'https://www.pepperfry.ltd/wp-content/uploads/2023/03/mobile-image.jpg' }} alt="hbdf" style={styles.img} />
-                </View>
-
-
-            </View>
-
-        </View>
-
+        <controls.View style={styles.container}>
+            <controls.View style={styles.innercontainer}>
+                <controls.View style={styles.headcontainer}>
+                    <controls.Text style={styles.headtext}>OUR STORY</controls.Text>
+                </controls.View>
+                <controls.View><controls.Image source={{ uri: 'https://www.pepperfry.ltd/wp-content/uploads/2023/03/mobile-image.jpg' }} alt="hbdf" style={styles.img} /></controls.View>
+            </controls.View>
+        </controls.View>
     )
 }
-
 export default Aboutourstory
-
-const styles = StyleSheet.create({
+const styles = controls.StyleSheet.create({
     container: {
         flex: 1,
-      
         marginTop: 10
     },
     innercontainer: {
@@ -41,20 +24,18 @@ const styles = StyleSheet.create({
         marginHorizontal: 22,
         flexDirection: 'column'
     },
-  
     headcontainer: {
-        marginTop: 30, 
+        marginTop: 30,
     },
     headtext: {
         textAlign: 'center',
         color: '#000000',
-        fontSize: 35,
-        fontWeight: 'bold'
+        fontSize: 26,
+        fontWeight: '900'
     },
     img: {
         height: 600,
         width: '100%',
         resizeMode: 'contain',
     },
- 
 })

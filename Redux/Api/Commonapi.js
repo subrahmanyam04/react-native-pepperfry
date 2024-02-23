@@ -1,0 +1,1 @@
+export const BASE_URL = 'https://pepperfry-a4a65-default-rtdb.firebaseio.com'

@@ -1,20 +1,11 @@
-// DetailsScreen.js
 import React from 'react';
-import { View, Text, ScrollView } from 'react-native';
-
-import Giftcardtabs from './Giftcardtabs';
 import Gifttab2layout from './Gifttab2layout';
-
+import controls from './Imports';
 const Gifttabpage2 = () => {
-  
   return (
-   
-   <ScrollView>
-    <Gifttab2layout/>
-   </ScrollView>
-  
-    
+    <controls.ScrollView bounces={false} alwaysBounceVertical={false}>
+      <Gifttab2layout />
+    </controls.ScrollView>
   );
 };
-
 export default Gifttabpage2;
